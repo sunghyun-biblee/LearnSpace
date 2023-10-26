@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	const ids=["multi","java","script","biblee","sunghyun"]
+	
+	function confirmChk(){
+		// 입력한 id 값
+		let id = document.getElementById("id").value;
+		console.log(id);
+		// 메세지를 출력할 div태그 선택
+		let div = document.getElementsByTagName("div")[0];
+		console.log(id);
+		
+		if(ids.indexOf(id)!= -1){
+			div.innerHTML="<b> 아이디가 존재합니다. </b>";
+		}else{
+			let userId=id+"사용할수있는 아이디 입니다."+"<input type='button' value='확인' onclick='insertId(\""+id+"\");'>"
+			div.innerHTML=userId;
+			console.log(userId);
+		}
+		
+	}
+	function insertId(id){
+		console.log(id);
+		console.dir(id);
+		alert(id);
+		opener.document.getElementsByName("id")[0].value=id;
+		opener.document.getElementsByName("pwd")[0].focus();
+		console.log(id.value);
+		// close();
+	}
+	
+	
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" id="id"> </td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<input type="button" value="중복확인" onclick="confirmChk();">
+			<input type="button" value="취소!" onclick="window.close();">
+			</td>
+		</tr>
+	</table>
+	<div></div>
+</body>
+</html>
