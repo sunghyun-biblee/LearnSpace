@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function locTest() {
+        // 페이지 이동
+        // location.href="https://google.com";
+
+        //페이지 이동
+        location.replace("https://google.com"); // 전 단계 이력X : 뒤로가기 X
+
+        //페이지 새로고침
+        location.reload();
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 문서의 주소와 관련된 객체   -->
+    <a href="google.com">구글로 이동</a>
+    <button onclick="locTest();">이동</button>
+  </body>
+</html>

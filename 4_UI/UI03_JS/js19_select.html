@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function show01() {
+        let food = document.getElementsByName("food")[0];
+
+        //selectedIndex : 선택한 option태그의 index를 반환
+        let index = food.selectedIndex;
+
+        //options :select가 가지고 있는 option 태그들
+        let fooval = food.options[index].value;
+
+        alert("오늘저녁은" + fooval + "먹자");
+      }
+      function show02() {
+        // 여러개 선택된 메뉴들을 alert() 로 출력
+        let food = document.getElementsByName("food")[1];
+        //[ ]를 쓰는 이유는 태그 name속성에 동일한 값을가진 태그가 있을수있기 때문에 위에서 순서대로 번호를 매겨 해당태그를 선택한다.
+
+        let str = ""; //option 태그의 value를 저장하기위한 공간
+
+        for (let i = 0; i < food.options.length; i++) {
+          // 선택이 된 option태그들의 값을 str에 저장.
+          if (food.options[i].selected) {
+            str += food.options[i].value + " ";
+            console.log(food.options);
+          }
+        }
+        alert(str);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>음식선택하기</h1>
+    <!-- 드롭다운 메뉴-->
+    <form action="">
+      <select name="food" onchange="show01();">
+        <!--select 태그가 바뀌게되면 이벤트를 감지하여 함수실행-->
+        <option>--- 선택 ---</option>
+        <option value="삼겹살">삼겹살</option>
+        <option value="라면">라면</option>
+        <option value="광어회">광어회</option>
+        <option value="꽃등심">꽃등심</option>
+        <option value="치킨">치킨</option>
+      </select>
+
+      <br /><br /><br />
+      <select name="food" multiple="multiple" size="5">
+        <option>--- 선택 ---</option>
+        <option value="삼겹살">삼겹살</option>
+        <option value="라면">라면</option>
+        <option value="광어회">광어회</option>
+        <option value="꽃등심">꽃등심</option>
+        <option value="치킨">치킨</option>
+      </select>
+      <input type="button" value="선택" onclick="show02();" />
+    </form>
+  </body>
+</html>
