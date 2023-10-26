@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function arrTest01() {
+        let arr1 = new Array();
+        let arr2 = new Array(3);
+
+        console.log(arr1[0]);
+        console.log(arr2[0]);
+        arr1[0] = "Banana";
+        console.log(arr1[0]);
+        arr2[0] = "자동차";
+        arr2[1] = "비행기";
+        arr2[2] = "도보";
+        arr2[3] = "버스";
+        console.log(arr2);
+
+        // 초기화 하며 배열 생성
+        var arr3 = new Array("홍길동", "임꺽정", "이순신");
+        console.log(arr3);
+        var arr4 = [
+          "java",
+          "mysql",
+          "html",
+          "css",
+          "js",
+          ["jq", "jsp", "servlet"],
+        ];
+
+        console.log(arr4);
+      }
+
+      function arrTest02() {
+        // indexof() : 배열에서 해당하는 데이터가 위치한 index값을 리턴
+        let arr1 = ["귤", "사과", "딸기", "바나나", "멜론", "포도", "수박"];
+        console.log("멜론의 index : " + arr1.indexOf("멜론"));
+
+        // concat() : 배열 결합
+        arr1 = ["멜론", "포도", "수박"];
+        let arr2 = ["귤", "사과", "배"];
+        console.log("arr1.concat(arr2): " + arr1.concat(arr2));
+        console.log("arr2.concat(arr1): " + arr2.concat(arr1));
+        // 배열의 결합순서에따라 배열안에 저장되는 값의 순서가 달라진다.
+
+        //  join() : 배열을 문자열로 반환
+        let arr2join = arr2.join();
+        console.log(arr2join); // 문자열로 반환
+        console.log(arr2); // 배열로 반환
+        console.log(arr2join + " : " + typeof arr2join);
+
+        arr2join = arr2.join(" 랑 "); // 배열의 값 사이사이에 해당 매개변수값을 입력한다
+        console.log(arr2join);
+        console.log(arr2join + " : " + typeof arr2join);
+
+        // reverse() : 배열의 순서를 뒤집는다.
+        arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        console.log("arr1: " + arr1);
+        console.log("arr1 reverse(): " + arr1.reverse()); // reverse를 실행할때만 뒤집지않고 뒤집은채 배열을 저장한다.
+        console.log("reverse() 후 arr1: " + arr1); // reverse를 실행한 후 배열이기때문에 뒤집은채 유지된다.
+
+        // push() : 배열의 맨 뒤에 요소 추가
+        // pop() : 배열의 맨 뒤에 요소 제거
+        arr1 = ["서초동", "방배동", "화양동", "대치동", "역삼동"];
+        console.log("arr1: " + arr1);
+
+        arr1.push("대명동");
+        console.log("arr1 push: " + arr1);
+        arr1.push("평리동");
+        arr1.sort(); // 정렬/ 오름차순
+        console.log("arr1 push: " + arr1);
+        console.log("arr1 pop: " + arr1.pop());
+        console.log("pop후 arr1: " + arr1);
+
+        // shift(): 배열의 맨 앞에 요소 제거
+        // unshift(): 배열의 맨앞에 요소 추가
+        console.log(arr1.shift());
+        console.log(arr1);
+        // 배열과 반대 : 배열은 어떤 작업이든 맨 뒤에서 시작 , 쉬프트는 맨 앞에서 시작
+
+        arr1.unshift("봉덕동");
+        console.log(arr1);
+
+        // slice(): 배열의 요소를 선택해서 잘라내기
+        // slice(시작인덱스, 종료인덱스)
+        arr1 = ["자바", "디비", "html", "css", "js"];
+        console.log(arr1.slice(2, 4));
+        console.log("slice 후 arr1: " + arr1);
+
+        // splice(): 배열의 index위치의 요소 제거 및 추가
+        // splice(index,제거수,추가값)
+        console.log(arr1.splice(2, 3));
+        console.log(arr1.splice(2, 3, "a", "b", "c"));
+        console.log("splice 후 arr1: " + arr1);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>배열</h1>
+    <p>
+      자바스크립트에서 자료형 지정이 없기 때문에 모든 자료형을 보관하는 변수의
+      모음을 배열로 처리
+    </p>
+
+    <h3>배열선언</h3>
+    <p>배열 선언시 크기를 지정하지 않고 선언 가능</p>
+    <button onclick="arrTest01();">Click</button>
+    <br />
+
+    <h3>Array 객체의 함수</h3>
+    <p>
+      indexOf(), concat(), join(), reverse(), push()&pop(), shift()&unshift(),
+      slice(), splice()....
+    </p>
+    <button onclick="arrTest02();">Click</button>
+  </body>
+</html>

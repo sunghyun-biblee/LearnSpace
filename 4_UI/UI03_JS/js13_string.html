@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function strTest01() {
+        let str01 = "String";
+        let str02 = "Test";
+
+        // + 연산자
+        let str03 = str01 + str02;
+        alert("String + Test = " + str03);
+
+        // concat() : 여러 문자열을 입력해 하나로 합치는 함수
+        str03 = str01.concat(str02, " java", "script !");
+        alert("concat( ) : " + str03);
+      }
+      function strTest02() {
+        let str = prompt("이름입력");
+        if (str == "biblee") {
+          alert(str + "님, 환영합니다.");
+        } else {
+          alert("이름을 확인해주세요.");
+        }
+
+        // == 동등 연산자 : 비교하는 자료형에도 자동 형변환 (비교하는 데이터와 자동형변환하여 비교함)
+        let numVal = 10;
+        if (numVal == "10") {
+          alert("== 연산자 : 숫자 10이 맞습니다.");
+        } else {
+          alert("== 연산자 : 숫자 10이 아닙니다.");
+        }
+
+        // 형변환을 통한 비교를 원하지 않을 경우, 타입까지 비교하고 싶을 경우
+        // === 연산자
+        if (numVal == "10") {
+          alert("== 연산자 : 숫자 10이 맞습니다.");
+        } else {
+          alert("== 연산자 : 숫자 10이 아닙니다.");
+        }
+      }
+      function strTest03() {
+        // indexOf() : 왼 -> 오
+        // lastIndexOf() : 오 -> 왼
+        // 검색하는 값이 존재하지 않을 경우 : -1 리턴
+
+        let str = "조성현 최성현 박성현 이성현";
+        let prop = prompt("이름입력");
+
+        alert("indexOf(): " + str.indexOf(prop));
+        alert("lastIndexOf(): " + str.lastIndexOf(prop));
+      }
+      function strTest04() {
+        // substring : 시작index , 종료index를 입력하여 추출
+        // split : 기준이 되는 내용으로 나눠 배열로 저장
+        let strVal =
+          "문자열 추출하기. 사용함수 : indexof,lastindexof,substring,split.";
+        let startIndex = strVal.indexOf(":");
+        let endIndex = strVal.lastIndexOf(".");
+
+        let substr = strVal.substring(startIndex, endIndex);
+        alert(substr);
+
+        let splitVal = substr.split(","); // , 를 기준으로 나눠서 배열에 저장
+        alert(splitVal + splitVal[2]); // , 를 기준으로 나눈 배열에서 [2]에 해당하는 값을 뒤에 추가로 붙인다.
+      }
+    </script>
+  </head>
+  <body>
+    <h1>String</h1>
+    <p>문자열 합치기 <button onclick="strTest01();">Click</button></p>
+    <br />
+    <p>문자열 비교하기 <button onclick="strTest02();">Click</button></p>
+    <br />
+    <p>문자열 검색 <button onclick="strTest03();">Click</button></p>
+    <br />
+    <p>문자열 추출 <button onclick="strTest04();">Click</button></p>
+  </body>
+</html>

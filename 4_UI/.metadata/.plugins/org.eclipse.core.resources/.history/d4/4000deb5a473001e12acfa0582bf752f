@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function openWin(){
+		let url="js16_window02.html";
+		let target="";
+	}
+</script>
+</head>
+<body>
+	<h1>window 객체</h1>
+<pre>
+프로퍼티 
+	-document
+	-history
+	-location
+	-navigator
+	-parent
+	-self
+	-...
+메소드
+	-alert()
+	-confirm()
+	-prompt()
+	-back()
+	-forward()
+	-setInterval()
+	-open()
+	-close()
+	-...
+	</pre>
+<div>
+	<h1>팝업창 만들기</h1>
+	<button onclick="openWin();" name="btn">창 열기</button>
+</div>
+</body>
+</html>

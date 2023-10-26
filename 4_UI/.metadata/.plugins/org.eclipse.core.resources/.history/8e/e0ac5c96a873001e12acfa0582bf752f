@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function test(){
+		// input 태그를 탐색하여 입력된 value 값을 가지고 온다.
+		let val=document.getElementsByName("test")[0].value;
+		// value 값을 window01.html의 div태그(id=tt)에 보낸다
+		// window.opener -> 창열기를 실행했던 윈도우
+		window.opener.document.getElementById("tt").innerHTML+=val;
+		// 창열기를 실행했던 윈도우에 아이디가 tt인 태그를 찾고,이후 val값을 태그안에 넣어라
+		close(); // test() 메소드를 실행한후 종료한다 (창 닫기)
+	}
+</script>
+</head>
+<body>
+<h1>팝업</h1>
+<input type="text" name="test">
+<input type="button" onclick="test();" value="전달">
+<input type="button" onclick="self.close();" value="창닫기">
+<!--  self를 붙이는 이유는 선언한 함수 close 일수도있고 window.객체의 close인지 모르기때문에 window.close를 실행할려면 self를 붙인다. -->
+<!-- self => 자기자신, 즉 창닫기 태그를 의미 -->
+<!-- window => 현재 보고있는 창 -->
+</body>
+</html>

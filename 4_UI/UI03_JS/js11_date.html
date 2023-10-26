@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        // 페이지가 로드되면 실행한다
+        document.getElementsByTagName("button")[0].onclick = function () {
+          // head 태그안에 작성하면 getelement가 실행되는 시점에 객체화가 생성되어있지 않기 때문에 오류발생
+          // 함수를 선언하여 실행하는 경우가 아닌, element에 함수를 저장하여 실행하는 방식은 element가 객체화되고 난 후 스크립트코드를 작성해야한다
+          // 스크립트가 읽히는 시점이랑 도큐먼트가 생성되는 시점이 달라서 오류발생 (읽히기 전에는 탐색 불가 : 객체가 안만들어져있기떄문에)
+          let toDay = document.getElementById("today");
+          let date = new Date(); // 오늘 날짜
+          toDay.innerHTML += date + "<br>"; // Wed Oct 25 2023 11:30:53 GMT+0900 (한국 표준시)
+          toDay.innerHTML += date.toDateString() + "<br>"; // Wed Oct 25 2023
+          toDay.innerHTML += date.toLocaleDateString() + "<br>"; //2023. 10. 25.
+          toDay.innerHTML += date.toLocaleString() + "<br>"; //2023. 10. 25. 오전 11:31:46
+          toDay.innerHTML += date.toLocaleTimeString() + "<br>"; //오전 11:33:28
+        };
+        document.getElementsByTagName("button")[1].onclick = testDate;
+      };
+      function testDate() {
+        let year = 2022;
+        let month = 3; // 3이 저장되고 date 객체 입장에서는 -1 한 값을 인식하여 4월로 인식된다
+        let day = 14;
+        let date = new Date(year, month - 1, day);
+        document.getElementById("spec").innerHTML += date + "<br>";
+        document.getElementById("spec").innerHTML +=
+          date.getFullYear() +
+          "/" +
+          (date.getMonth() + 1) +
+          "/" +
+          date.getDate() + // getDate : 며칠인지 알려줌
+          "/" +
+          date.getDay(); // getDay : 요일 0:일요일 ~ 6:토요일 (요일을 알려줌)
+      }
+    </script>
+  </head>
+  <body>
+    <h1>오늘 날짜 출력하기</h1>
+    <span id="today"></span><br />
+    <button>오늘날짜</button>
+    <hr />
+    <h1>특정 날짜 출력하기</h1>
+    <span id="spec"></span><br />
+    <button>특정날짜</button>
+  </body>
+</html>

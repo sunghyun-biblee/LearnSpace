@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      function func01() {
+        alert("명시적 함수");
+      }
+      const func02 = function () {
+        alert("익명의 함수");
+      };
+      function func03() {
+        liternalPrn(function (msg) {
+          alert(msg);
+        });
+        liternalPrn2(function () {
+          alert("어렵다");
+        });
+      }
+      function liternalPrn(arg) {
+        arg("안녕하세요 리터럴입니다.");
+      }
+      function liternalPrn2(arg) {
+        arg();
+      }
+      function valTest() {
+        // arguments : 인자값 갯수만큼 배열 형태로 저장.
+        console.log(arguments);
+
+        let val = "";
+        for (let i = 0; i < arguments.length; i++) {
+          val += arguments[i] + " ";
+        }
+        alert(val);
+      }
+      //   클로저 : 외부 함수 안에 있는 내부 함수
+      //           외부함수에 접근가능 변수 , 파라미터
+      function closureTest(val) {
+        const msg = "???";
+        function addval() {
+          alert(val + " " + msg);
+        }
+        return addval;
+      }
+
+      let javaClass = closureTest("javascript");
+    </script>
+  </head>
+  <body>
+    <h2>Function 함수</h2>
+    <h2>함수의 종료</h2>
+    <p onclick="func01();">1. 명시적 함수</p>
+    <p onclick="func02();">2. 익명 함수</p>
+    <p onclick="func03();">3. 리터럴 함수</p>
+
+    <h2 onclick="valTest('multi','캠퍼스','세종대','501호');">
+      args(arguments) 속성
+    </h2>
+
+    <h2>클로저 Closure (함수 리턴)</h2>
+    <p>클로저는 외부함수의 변수에 접근할 수 있는 내부함수.</p>
+    자바수업 <input type="text" id="day" value=" " /> &nbsp;
+    <input type="button" value="click" onclick="javaClass();" />
+  </body>
+</html>

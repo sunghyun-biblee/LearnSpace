@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function myclass501() {
+        // 객체 생성1
+        let name = "501호"; // 외부에서 접근이 불가능함
+        this.name02 = "세종대점"; // 외부에서 접근이 가능함
+        this.getName = function () {
+          return name;
+        };
+      }
+      // 객체 생성2
+      const myClass501_2 = {
+        name: "multi",
+        print: function () {
+          alert(myClass501_2.name + ": print");
+          return myClass501_2.name;
+        },
+      };
+
+      myclass501.prototype.age = 20;
+      // prototype의 age라는 속성에 20값을 저장했기때문에 age를 출력할때 20으로 출력
+
+      function objTest() {
+        // function 기반 객체 생성
+        let cls = new myclass501();
+        alert(cls.name02);
+        alert(cls.getName());
+
+        //
+        let cls2 = new myclass501();
+        cls2.age = 21;
+        console.log(cls2.age);
+        console.log(cls.age);
+
+        alert(myClass501_2.name);
+        myClass501_2.print();
+
+        console.log(cls);
+      }
+    </script>
+  </head>
+  <body>
+    <pre>
+        객체 : 관련된 데이터와 함수의 집합니다
+        구성
+        -함수 : 기능
+        -속성 : 객체 내부 데이터와
+        -this : 객체 내부의 메소드나 속성을 정의 할 때 사용
+        -프로토 타입 : 객체 확장
+    </pre>
+    <button onclick="objTest();">객체</button>
+  </body>
+</html>

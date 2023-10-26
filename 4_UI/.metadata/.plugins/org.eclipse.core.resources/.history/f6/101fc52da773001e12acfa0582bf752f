@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>팝업</h1>
+<input type="text" name="test">
+<input type="button" onclick="test();" value="전달">
+<input type="button" onclick="self.close();" value="창닫기">
+<!-- self => 자기자신, 즉 창닫기 태그를 의미 -->
+<!-- window => 현재 보고있는 창 -->
+</body>
+</html>

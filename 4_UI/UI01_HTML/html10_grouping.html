@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      /* CSS 작성 */
+      div {
+        border: 1px dashed red;
+        margin: 10px;
+      }
+      #body {
+        height: 400px;
+      }
+      #left {
+        width: 65%;
+        height: 90%;
+        float: left;
+      }
+      #right {
+        width: 25%;
+        height: 90%;
+        float: right;
+      }
+      /* h1 {
+        margin-left: 10px;
+      } */
+    </style>
+  </head>
+  <body>
+    <!-- 
+        시멘틱 구조 태그
+        일반적으로는 div 태그로만 구조를 나누었다.
+        컴퓨터입장에서 어떤태그가 어떤 기능인지 분별이 어려워
+        특정태그에 의미를 부여하여 웹페이지를 작성 가능.
+
+        ex) (구) <div id="header"> ==> (신) <header>
+            header : 제목, 로고, 아이콘...
+            nav : 검색, 메뉴
+            section : 컨텐츠 주제별로 묶을때
+            article : 독립적으로 사용할 수 있는 내용 정의
+            aside : 광고나 메인과 상관없는 내용
+            footer : 저자,저작권,연락처,주소 ...
+     -->
+    <div id="header">
+      <h1>제목</h1>
+      <div>
+        <span><a href="">메뉴1</a></span>
+        <span><a href="">메뉴2</a></span>
+        <span><a href="">메뉴3</a></span>
+        <span><a href="">메뉴4</a></span>
+      </div>
+    </div>
+    <div id="body">
+      <div id="left">
+        <p>왼쪽</p>
+      </div>
+      <div id="right">
+        <div id="login">
+          <form action="">
+            ID: <input type="text" size="5" /> <br />
+            PW: <input type="password" size="5" /> <br />
+          </form>
+        </div>
+        <div id="banner">광고</div>
+      </div>
+    </div>
+    <div id="footer">copyright &copy; all rights reserveds...</div>
+  </body>
+</html>

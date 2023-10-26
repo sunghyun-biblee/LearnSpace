@@ -1,0 +1,9 @@
+package com.test01;
+
+public class DBTest05 {
+
+	public static void main(String[] args) {
+		// 삭제
+	}
+
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>box 모델</title>
+    <style type="text/css">
+      dl,
+      dd,
+      dt,
+      p,
+      h2 {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        border: 3px double navy;
+        margin: 50px;
+        width: 600px;
+      }
+      dt {
+        background-color: skyblue;
+        text-align: center;
+        font-size: 25pt;
+        letter-spacing: 20px; /* 자간 : 글자간격 */
+        padding: 15px;
+        border-bottom: navy 5px double;
+      }
+      dd {
+        padding: 10px;
+      }
+      .line {
+        border-bottom: 5px dotted red;
+      }
+    </style>
+  </head>
+  <body>
+    <dl class="box">
+      <dt>28회차</dt>
+      <dd class="line">
+        <h2>10월 20일 금요일</h2>
+        <p>css 수업 진행중</p>
+      </dd>
+      <dd>
+        <h2>10월 21일 토요일</h2>
+        <p>기억은 안나지만 약속</p>
+      </dd>
+    </dl>
+  </body>
+</html>

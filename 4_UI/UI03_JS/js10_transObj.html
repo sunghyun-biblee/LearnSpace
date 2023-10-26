@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function numTest(num) {
+        // alert(num + ":" + typeof num);
+        let val = Number(num) + 5;
+        alert(val);
+      }
+      let intTest = (num) => {
+        const val = parseInt(num) + 10;
+        alert(val);
+      };
+      function floatTest(num) {
+        let val = parseFloat(num) + 15; // 정수를 입력해도 실수가 되긴하나, 소수점이 0이라면 생략한다 ex) 23.0 => 23 으로 출력
+        alert(val);
+      }
+    </script>
+  </head>
+  <body>
+    <h2>1. 숫자형 형변환 number()함수</h2>
+    <p>문자형 정수/실수를 숫자형으로 변환시켜 준다.</p>
+    <input type="text" id="num" />
+    <button onclick="numTest(num.value);">확인</button>
+
+    <h2>2. 정수형 형변환 parseInt() 함수</h2>
+    <input type="text" id="int" />
+    <button onclick="intTest(int.value);">확인</button>
+
+    <h3>3. 실수형 형변환 parseFloat() 함수</h3>
+    <input type="text" id="float" />
+    <button onclick="floatTest(float.value);">확인</button>
+
+    <h2>4. 문자열 숫자의 + 연산</h2>
+    <button onclick="stringTest();">확인</button>
+    <div id="res"></div>
+    <script>
+      function stringTest() {
+        // id가 res인 div 태그를 탐색
+        let doc = document.getElementById("res");
+        let val = 7 + 7; // 산수 적용  7 + 7 = 14
+        doc.innerHTML += val + "<br>";
+
+        val = 7 + "7"; // 숫자 + 문자 => 산수가 아닌 글자붙이기? ex) 7 + "7" = 77
+        doc.innerHTML += val + "<br>";
+
+        val = 7 + 7 + "7"; // 숫자들은 산수 적용하고 문자만 뒤에 붙임 ex) 7 + 7 + "7" = 147
+        doc.innerHTML += val + "<br>";
+      }
+    </script>
+  </body>
+</html>

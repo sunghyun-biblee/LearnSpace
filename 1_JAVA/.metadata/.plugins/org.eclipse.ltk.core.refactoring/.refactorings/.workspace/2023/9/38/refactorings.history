@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HW1_LogicHomework&apos; to &apos;Z_HW1_LogicHomework&apos;" description="Rename resource &apos;HW1_LogicHomework&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/HW1_LogicHomework" name="Z_HW1_LogicHomework" stamp="1695089319028" updateReferences="true"/>
+</session>

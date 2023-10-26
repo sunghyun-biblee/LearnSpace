@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display</title>
+    <!-- Display 속성은 화면의 레이아웃을 결정하는 중요한 속성
+        기본값 속성 : block , inline (+ none, inline-block) 
+        inline : 줄바꿈 X, block : 앞,뒤로 줄바꿈 , none : 숨기기
+        inline-block : 줄바꿈 X ,크기변경 O
+-->
+
+    <style type="text/css">
+      div,
+      p {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>제목</h1>
+      <div id="menu1">
+        <p><a href="">메뉴1</a></p>
+      </div>
+      <div id="menu2">
+        <p><a href="">메뉴2</a></p>
+      </div>
+      <div id="menu3">
+        <p><a href="">메뉴3</a></p>
+      </div>
+      <div id="menu4">
+        <p><a href="">메뉴4</a></p>
+      </div>
+    </div>
+  </body>
+</html>

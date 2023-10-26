@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      .a {
+        width: 200px;
+        /* width:10em  : 본인 폰트사이즈의 10배 */
+        height: 200px;
+        background-color: pink;
+        display: inline-block;
+        font-size: 24px;
+        /* 브라우저 font-size 기본 크기는 16px */
+
+        /* em: 부모의 글꼴크기 , 2em은 부모 글꼴 크기의 2배 */
+        /* rem: 루투의 글꼴 크기, <html> 태그의 폰트사이즈
+                아무설정이  되어 있찌 않을 경우 16px*/
+        font-size: 2em;
+        /* rem은 기본크기 16px을 따라간다 ( html 기본 폰트 사이즈) */
+        /* padding: 1rem;
+        margin: 1rem; */
+
+        /* em은 자신의 폰트사이즈를 기반으로 따라간다. */
+        padding: 1em;
+        margin: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="b">
+      <div class="a">테스트</div>
+    </div>
+  </body>
+</html>

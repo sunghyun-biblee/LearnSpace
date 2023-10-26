@@ -1,0 +1,128 @@
+/* 태그(타입) 선택자 */
+pre {
+  text-align: center;
+}
+
+/* h1 를 선택하여 우측으로 정렬, 글자색을 파랑색으로 스타일 적용 */
+h1 {
+  text-align: right;
+  color: blue;
+}
+
+/* id 선택자 */
+#sid01 {
+  color: orange;
+}
+#sid02 {
+  color: green;
+}
+#sid03 {
+  color: aquamarine;
+}
+
+.scls {
+  color: pink;
+}
+
+#scls01 {
+  color: black;
+}
+
+/* 우선순위
+id > class
+*/
+/* 전체 선택자  */
+/* * {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+} */
+
+/* 자식 선택자 */
+#at > p {
+  color: orange;
+}
+/* text가 자식1인 p 태그를 선택(자식선택자료)해서 글자색을 red로 변경 */
+
+article > div > div > p {
+  color: red;
+}
+
+#at > div > div > p {
+  font-size: 20px;
+}
+
+/* 인접 선택자 */
+
+h3 + b {
+  background-color: black;
+  color: white;
+}
+
+span + b {
+  background-color: yellow;
+  color: violet;
+}
+
+/* 속성 선택자 */
+p[title] {
+  color: skyblue;
+}
+
+p[title="b"] {
+  background-color: black;
+}
+p[name="c"] {
+  color: red;
+}
+
+/* 가상클래스 선택자 */
+/*
+    link : 방문 전(방문하지않은) 링크 선택
+    visited : 방문 후(방문했었던) 링크 선택
+*/
+a:link {
+  color: pink;
+  font-size: 25pt;
+}
+
+a:visited {
+  color: gray;
+}
+
+a:hover {
+  /* 마우스를 올릴 때 */
+  background-color: #5ea3ec;
+}
+
+a:active {
+  /* 클릭하는 순간에 변경 */
+  background-color: chocolate;
+}
+
+input:checked {
+  width: 200px;
+  height: 200px;
+}
+
+/* 종속선택자 */
+li.acls01 {
+  background-color: green;
+}
+li.acls02#sidli {
+  /* li이면서 acls02클래스이며 id가 sidli를 선택 */
+  color: brown;
+}
+
+/* 그룹 선택자 */
+p,
+pre,
+strong,
+.acls01 {
+  color: skyblue;
+}
+
+/* 하위 선택자  */
+#last span {
+  background-color: yellow;
+}

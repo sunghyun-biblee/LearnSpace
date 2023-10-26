@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>테이블(표)</title>
+  </head>
+  <body>
+    <!-- 
+        표를 만드는 태그에는 <table><tr><th><td>가 있다.
+        <table> : 기본적은 표를 생성해주는 태그이다.
+        <tr> : 표의 행을 나타내는 태그
+        <th> : 표의 제목 셀을 나타내는 태그
+        <td> : 표의 일반 셀을 나타내는 태그
+     -->
+    <h2>기본 테이블 만들기</h2>
+    <table border="4">
+      <tr>
+        <th>컬럼1</th>
+        <th>컬럼2</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+    </table>
+
+    <h2>주요 태그를 사용하여 테이블 만들기</h2>
+    <table border="1">
+      <caption>
+        테이블 제목
+      </caption>
+      <!-- 테이블 제목을 의미-->
+      <colgroup>
+        <col width="100px" />
+        <col width="200px" />
+        <col width="300px" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>컬럼01</th>
+          <th>컬럼02</th>
+          <th>컬럼03</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>f1</td>
+          <td>f2</td>
+          <td>f3</td>
+        </tr>
+      </tfoot>
+    </table>
+    <!-- thead,tbody,tfoot은 기능적으로는 크게 다른게 없으나 위치조정개념이라고 보면 된다.-->
+
+    <h2>테이블 셀 병합</h2>
+    <!--
+         <td> 태그의 속성을 이용
+        colspan : 열을 합치기
+        rowspan : 행을 합치기
+         -->
+    <table border="2">
+      <caption>
+        병합 테이블
+      </caption>
+      <thead style="background-color: #5ea3ec">
+        <tr>
+          <th>컬럼-1</th>
+          <th>컬럼-2</th>
+          <th>컬럼-3</th>
+          <th>컬럼-4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">1(세로합치기)</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td colspan="2">5(가로합치기)</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">f9</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

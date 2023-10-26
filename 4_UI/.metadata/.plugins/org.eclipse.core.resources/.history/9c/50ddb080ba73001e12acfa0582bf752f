@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>아이디</td>
+			<td><input type="text" id="id"> </td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<input type="button" value="중복확인" onclick="confirmChk();">
+			<input type="button" value="취소" onclick="self.close();">
+			</td>
+		</tr>
+	</table>
+	<div></div>
+</body>
+</html>

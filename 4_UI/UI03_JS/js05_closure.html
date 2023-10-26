@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function test01(name) {
+        let output = "hello " + name;
+      }
+
+      //   alert(output); output이라는 test01함수에 선언된 변수는 사용불가
+
+      function test02(name) {
+        let output = "hello" + name;
+        return function () {
+          alert(output);
+        };
+      }
+
+      function test03(button) {
+        // console.log(button);
+        let subject = button.innerHTML;
+        // console.log(subject);
+        let fn = test04(subject);
+        alert(fn());
+      }
+      function test04(subject) {
+        let output = "오늘 배울 내용은 " + subject + "입니다";
+        return function () {
+          return output;
+        };
+      }
+    </script>
+  </head>
+  <body>
+    <h1>클로저</h1>
+    <h3>지엽견수의 스코프</h3>
+    <p>함수 내부에 선언된변수는 함수 밖에서 사용불가</p>
+    <button onclick="test01('biblee');">클릭</button>
+
+    <h3>클로저</h3>
+    <p>
+      지역변수는 함수가 실행될 때 생성되고 함수가 종료될 때 사라지나
+      <br />하지만 함수를 리턴하는 함수를 이용하면 규칙을 위반할 수 있다.
+    </p>
+    <button onclick="test02('biblee')();">클릭</button>
+
+    <h3>클로저 연습</h3>
+    <button onclick="test03(this);">Javascript</button>
+  </body>
+</html>

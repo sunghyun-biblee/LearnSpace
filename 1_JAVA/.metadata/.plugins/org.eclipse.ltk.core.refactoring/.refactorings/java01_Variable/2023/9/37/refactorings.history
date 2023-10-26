@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.example&apos; to &apos;Java03_Operator/src&apos;&#x0D;&#x0A;- Original project: &apos;java01_Variable&apos;&#x0D;&#x0A;- Destination element: &apos;Java03_Operator/src&apos;&#x0D;&#x0A;- Original element: &apos;java01_Variable/src/com.example&apos;" description="Copy package" destination="=Java03_Operator/src" element1="/src&lt;com.example" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1694565940694" version="1.0"/>
+</session>

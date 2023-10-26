@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#regist{
+		border : 1px solid black;
+		background: pink;
+		position : absolute;
+		top: 515px;
+		left:400px;
+		display:none;
+	}
+</style>
+<script type="text/javascript">
+	function registForm(){
+		// 숨겨둔 회원가입 창을 보이게
+		 document.getElementById("regist").style.display="block"
+		
+		// let url="js17_window03.html";
+		// let target="_blank";
+		// let prop="width=600px,height=600px";
+		// window.open(url,target,prop);
+	}
+	function openWin(){
+		let url="js16_window02.html";
+		let target="_blank";
+		let prop="width=500px,height=500px";
+		window.open(url,target,prop);
+	}
+	
+</script>
+</head>
+<body>
+	<h1>window 객체</h1>
+<pre>
+프로퍼티 
+	-document
+	-history
+	-location
+	-navigator
+	-parent
+	-self
+	-...
+메소드
+	-alert()
+	-confirm()
+	-prompt()
+	-back()
+	-forward()
+	-setInterval()
+	-open()
+	-close()
+	-...
+	</pre>
+<div>
+	<h1>팝업창 만들기</h1>
+	<button onclick="openWin();" name="btn">창 열기</button>
+</div>
+<div id="tt"></div>
+
+<hr>
+<h1>회원가입 하기</h1>
+<button onclick="registForm()" name="btn">회원가입</button>
+<!-- 회원가입 폼 -->
+<div id="regist">
+	<form action="">
+	<table>
+		<caption>회원가입</caption>
+		<tr>
+			<td>아이디</td>
+			<td> <input type="text" name="id"> <input type="button" value="중복체크"> </td>
+		</tr>
+		<tr>
+			<td>패스워드</td>
+			<td> <input type="password" name="pwd" style="color:red;"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"> <input type="button" value="확인"> </td>
+		</tr>
+		</table>
+		
+	</form>
+</div>
+
+
+
+</body>
+</html>

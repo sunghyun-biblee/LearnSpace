@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function mathTest() {
+        // 랜덤숫자 (random() : 0~1난수 발생)
+        //Math.floor (): 뒤에 소숫점 버리기
+        let random = Math.floor(Math.random() * 100 + 1);
+        alert(random);
+        document.getElementById("res").innerHTML += random + "<br>";
+      }
+      function ranColor() {
+        // let rnum=function(){
+        //     return Math.floor(Math.random()*256);
+        let rnum = () => Math.floor(Math.random() * 256);
+        document.body.style.backgroundColor =
+          "rgb(" + rnum() + "," + rnum() + "," + rnum() + ")";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Math</h1>
+    <button onclick="mathTest();">버튼</button>
+    <div id="res"></div>
+    <br />
+    <button onclick="ranColor();">랜덤배경색</button>
+  </body>
+</html>

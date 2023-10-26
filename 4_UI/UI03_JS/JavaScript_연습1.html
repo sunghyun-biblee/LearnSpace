@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <style type="text/css">
+      #area {
+        width: 400px;
+        height: 150px;
+        background: #ffff99;
+        border: 1px solid #6666ff;
+      }
+    </style>
+    <script type="text/javascript">
+      /*
+	각각의 input태그에 입력한 내용을 아래의 div 태그에 출력
+	*/
+      function printValue() {
+        let buyp = document.querySelector("input");
+        let item = document.getElementById("pname");
+        let price = document.getElementsByName("price");
+
+        let area = document.getElementById("area");
+        console.log(price[0].value);
+        area.innerHTML +=
+          "구매자: " +
+          buyp.value +
+          "<br>" +
+          "상품명: " +
+          item.value +
+          "<br>" +
+          "가격: " +
+          price[0].value +
+          "<br>";
+      }
+    </script>
+  </head>
+  <body>
+    <h2>연습 1</h2>
+    <label>구매자 : </label>
+    <input type="text" placeholder="구매자의 이름을 입력하세요." />
+    <br />
+    <br />
+    <label>상품명 : </label>
+    <input type="text" id="pname" placeholder="구매 상품명을 입력하세요" />
+    <br />
+    <br />
+    <label>가격 : </label>
+    <input type="text" name="price" placeholder="구매 가격을 입력하세요." />
+    <br />
+    <br />
+    <button onclick="printValue();">입력값 출력하기</button>
+    <br />
+    <br />
+    <div id="area"></div>
+  </body>
+</html>

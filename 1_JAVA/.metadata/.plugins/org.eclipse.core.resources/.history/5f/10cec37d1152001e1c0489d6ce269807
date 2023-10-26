@@ -1,0 +1,12 @@
+package com.practice;
+
+
+public class Test {
+	public static void main(String[] args) {
+//			new Example().sample01();
+//			new Example().sample02();
+//			new Example().sample03();
+			new Example().sample04();
+	}
+
+}

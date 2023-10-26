@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom</title>
+    <script type="text/javascript">
+      function serachId() {
+        // id가 test인 엘리먼트 탐색
+        const doc = document.getElementById("test");
+        console.log(doc);
+        doc.innerHTML = "id로 탐색합니다"; // innerHTML - 가져온 태그 내의 값을 변경
+        doc.style.color = "skyblue"; // 가져온 태그의 글자 색을 변경
+      }
+      function searchName() {
+        // name이 test02인 엘리먼트 탐색
+        const doc = document.getElementsByName("test02");
+        console.log(doc);
+        doc[1].value = "name속성으로 엘리먼트 탐색"; // input태그안에 값을 설정
+      }
+      function serachTagName() {
+        // 태그이름이 p인 엘리먼트 탐색
+        const doc = document.getElementsByTagName("p");
+        console.log(doc);
+        console.log(doc[3]);
+        doc[3].style.color = "hotpink";
+        doc[3].innerHTML = "tagname으로 탐색";
+      }
+
+      function searchQS() {
+        //querySelector를 이용하여 엘리먼트 탐색 : 선택자(css)를 이용하여 탐색
+        let doc = document.querySelector("#test");
+        console.log(doc);
+        doc = document.querySelectorAll("p");
+        console.log(doc);
+      }
+    </script>
+  </head>
+  <body>
+    <p onclick="searchQS();">Dom (Document Object Model) 탐색 함수</p>
+    <p id="test" onclick="serachId();">
+      1. 엘리먼트의 id로 탐색 : 엘리먼트 하나를 선택(중복불가) - 반환 : 엘리먼트
+      하나
+    </p>
+    <p onclick="searchName();">
+      2. 엘리먼트의 name으로 탐색 : 엘리먼트 여러개 선택 -반환 : 배열(nodeList)
+      <br />
+      <input type="text" name="test02" value="" size="100%" />
+      <input type="text" name="test02" value="" size="100%" />
+      <input type="text" name="test02" value="" size="100%" />
+    </p>
+
+    <p onclick="serachTagName();">
+      3. 엘리먼트의 태그이름으로 탐색: 엘리먼트 여러개를 선택- 반환:배열
+    </p>
+  </body>
+</html>

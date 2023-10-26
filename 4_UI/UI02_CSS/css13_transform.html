@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      .transform {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        color: white;
+        font-size: 30pt;
+      }
+      #tlate {
+        transform: translate(50px, 50px);
+      }
+      #trotate {
+        transform: rotate(30deg);
+      }
+      #tscale {
+        transform: scale(0.5, 2);
+      }
+      #transition {
+        transition: width 0.5s, background 1.5s, transform 1.5s;
+        /* 정해진 시간동안 속성의 값을 변경한다. */
+      }
+      #transition:hover {
+        width: 800px;
+        background-color: aquamarine;
+        transform: translate(300px, 0px);
+      }
+      li {
+        width: 400px;
+        background-color: pink;
+        margin-bottom: 5px;
+        padding-left: 5px;
+        font-size: 30pt;
+        font-weight: bold;
+        list-style: none;
+        transition: width 0.5s linear, color 0.5s linear, letter-spacing 0.5s;
+        cursor: pointer;
+      }
+      li:hover {
+        width: 800px;
+        color: aquamarine;
+        letter-spacing: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>transform</h1>
+    <br />
+    <!-- 이동 -->
+    <h2>transform - translate</h2>
+    <div id="tlate" class="transform">translate : 위치이동</div>
+
+    <!-- 회전 -->
+    <h2>transform-rotate</h2>
+    <div id="trotate" class="transform">rotate : 회전</div>
+
+    <!-- 크기 -->
+    <h2>transform-scale</h2>
+    <div id="tscale" class="transform">scale : 크기</div>
+
+    <h2>transition</h2>
+    <div id="transition" class="transform">transition</div>
+    <div>
+      <h2>Menu</h2>
+      <ul>
+        <li>Java</li>
+        <li>Mysql</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Javscript</li>
+      </ul>
+    </div>
+  </body>
+</html>

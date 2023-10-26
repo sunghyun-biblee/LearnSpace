@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      // 윈도우 알림창
+      function alertTest() {
+        window.alert("내용 출력(단순 대화창)");
+      }
+      //   confirm : 확인/취소 버튼 제공(true,false 반환)
+      function confirmTest() {
+        // const test = window.confirm("confirm Test");
+        // alert(test);
+        if (confirm("배경을 분홍색으로 바꿀까요?")) {
+          document.body.style.backgroundColor = "pink";
+        } else {
+          alert("기본 색상 유지");
+        }
+      }
+
+      // prompt : 텍스트박스, 확인/취소 버튼 제공
+      // 입력한 텍스트 반환(취소 = null)
+      function promptTest() {
+        const txt = window.prompt("좋아하는 과목 번호\n[1:java 2:DB 3:UI]");
+        console.log(txt);
+        switch (txt) {
+          case "1":
+            alert("역시 자바");
+            break;
+          case "2":
+            alert("역시 DB");
+            break;
+          case "3":
+            alert("역시 UI");
+            break;
+            dafault: alert("1,2,3번 중 하나 선택");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- 
+    함수(Function)
+    기능으로서 작업을 수행하게 만들어진 독립적인 블록
+    ex) function 함수이름(매개변수){
+        실행할 코드
+    }
+    사용자가 작성하는 함수 이외에도 스크립트 기본 함수들이 많음
+     -->
+    <h1>window객체에서 제공하는 대화형 함수</h1>
+    <p>종류에는 <b>alert(),confirm(),prompt()</b>가 있습니다</p>
+    <p>alert(): <button onclick="alertTest();">클릭</button></p>
+    <p>confirm(): <button onclick="confirmTest();">클릭</button></p>
+    <p>prompt(): <button onclick="promptTest();">클릭</button></p>
+  </body>
+</html>

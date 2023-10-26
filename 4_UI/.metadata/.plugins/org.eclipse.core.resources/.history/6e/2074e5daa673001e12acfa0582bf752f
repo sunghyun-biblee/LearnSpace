@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>팝업</h1>
+<input type="text" name="test">
+<input type="button" onclick="test();" value="전달">
+<input type="button" onclick="self.close();" value="창닫기">
+
+</body>
+</html>

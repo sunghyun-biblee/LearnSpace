@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      img {
+        width: 300px;
+        height: 350px;
+        transition: all 1s;
+      }
+      /* 
+    미디어 쿼리 : 미디어타입 + 조건에 대한 물음(쿼리)로 구성
+    @media 미디어타입 and (쿼리) {조건이 만족할때 추가 적용할 스타일}
+     */
+
+      /* 미디어쿼리 작성 */
+      @media screen and (min-width: 840px) {
+        /* 화면의 최소 너비가 840까지 -> 너비가 840 이상일때 적용할 스타일 */
+        img {
+          width: 400px;
+          height: 500px;
+        }
+      }
+      /* 미디어쿼리 추가 작성 */
+      /* 화면의 크기가 1200이상일 때 이미지 크기를 600x750 . 투명도를 0.5로 적용 */
+      @media screen and (min-width: 1200px) {
+        img {
+          width: 600px;
+          height: 750px;
+          opacity: 0.5;
+        }
+      }
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        transition: all 0.5s;
+      }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="./resources/css03.css"
+      type="text/css"
+      media="screen and (max-width:840px)"
+    />
+  </head>
+  <body>
+    <img src="../sample/image/1.jpg" alt="" />
+    <div>TEST</div>
+  </body>
+</html>
