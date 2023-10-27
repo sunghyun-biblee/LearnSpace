@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function test01() {
+        alert("test01() 실행");
+      }
+      window.onload = function () {
+        document.getElementById("test02").onclick = function () {
+          alert("TEST02 클릭!");
+        };
+        let test03 = document.getElementById("test03");
+        test03.onclick = function () {
+          alert("TEST03 클릭!");
+          document.getElementById("test02").onclick = null;
+        };
+
+        let test04 = document.getElementById("test04");
+        test04.addEventListener("click", function () {
+          alert("test04 클릭");
+          //   이벤트 발생 객체를 this를 통해 선택 가능
+          //   console.log(this);
+          this.style.backgroundColor = "blue";
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>이벤트</h1>
+    <h3>인라인 이벤트 모델</h3>
+    <button onclick="test01();">실행확인</button>
+
+    <h3>고전 이벤트 모델</h3>
+    <button id="test02">테스트2</button>
+    <button id="test03">테스트3</button>
+    <button id="test04">테스트4</button>
+  </body>
+</html>
