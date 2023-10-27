@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function eleCreate() {
+        // 엘리먼트 생성 : createElement("tagName");
+        // txt노드 생성 : createTextNode();
+        // 속성노드 생성 : createAttribute("attrName");
+        // 속성 추가 : setAttributeNode();
+        //     "    : setAtrribute();
+
+        let div = document.createElement("div"); // div 태그 생성
+        // <div></div>
+
+        let txt = document.createTextNode("앨리먼트 생성"); // text 생성
+        div.appendChild(txt);
+        // <div> "앨리먼트 생성" </div>
+
+        let attr = document.createAttribute("style"); // 속성노드 생성
+        // style=""
+        attr.nodeValue = "border: 2px solid blue"; // 속성값
+        // style="border: 2px solid blue";
+
+        div.setAttributeNode(attr); // 속성추가
+        // div.setAttribute("style","color:red")
+        // <div style="border: 2px solid blue">"앨리먼트 생성"</div>
+
+        document.body.appendChild(div); // 생성한 div를 body에 추가
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="eleCreate()" ;>엘리먼트 생성하기</button>
+  </body>
+</html>
