@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        text-align: center;
+      }
+    </style>
+    <script>
+      function tableVal() {
+        let doc = document.forms[0]; // forms : form 요소 모두 반환
+        let vals = [
+          doc.id.value,
+          doc.pw.value,
+          doc.addr.value,
+          doc.phone.value,
+        ];
+        console.log(vals);
+
+        // 유효값 검사
+        for (let i = 0; i < vals.length; i++) {
+          if (vals[i] == "" || vals[i] == null || vals[i] == undefined) {
+            alert("모두 다 입력해주세요");
+            return; // function 종료
+          }
+        }
+        let addTr = createRow(vals);
+        document.getElementById("addtr").appendChild(addTr);
+      }
+
+      function createRow(vals) {
+        //vals를 받아서 row를 만든다.
+        let tr = document.createElement("tr"); //<tr></tr>
+
+        for (let i = 0; i < vals.length; i++) {
+          let td = document.createElement("td");
+          td.textContent = vals[i]; //<tr>value</tr>
+          tr.appendChild(td);
+        }
+        /*  <tr>
+            <td>id값</td>
+            <td>pw값</td>
+            <td>addr값</td>
+            <td>phone값</td>
+            </tr>
+        */
+        let delTd = document.createElement("td");
+        delTd.innerHTML =
+          "<input type='button' value='삭제' onclick='delRow(this);'>";
+        // <td> <input type='button' value='삭제' onclick='delRow(this);'> </td>
+
+        tr.appendChild(delTd);
+        /*  <tr>
+            <td>id값</td>
+            <td>pw값</td>
+            <td>addr값</td>
+            <td>phone값</td>
+            <td> <input type='button' value='삭제' onclick='delRow(this);'> </td>
+            </tr>
+        */
+        return tr;
+      }
+      function deleteVal() {
+        // 마지막 tr 태그 삭제
+        // removeChild();
+        let tbody = document.getElementById("addtr");
+        let delTr = tbody.lastChild;
+        tbody.removeChild(delTr);
+      }
+      function delRow(ele) {
+        console.dir(ele);
+        let epra = ele.parentNode;
+        let bpra = epra.parentNode;
+        // removeChild를 이용하여 삭제버튼 클릭한 row 삭제
+        let tbody = document.getElementById("addtr");
+        tbody.removeChild(bpra);
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <table id="intable">
+        <tr>
+          <td>아이디:</td>
+          <td><input type="text" name="id" /></td>
+        </tr>
+        <tr>
+          <td>비밀번호:</td>
+          <td><input type="text" name="pw" /></td>
+        </tr>
+        <tr>
+          <td>주소:</td>
+          <td><input type="text" name="addr" /></td>
+        </tr>
+        <tr>
+          <td>전화번호:</td>
+          <td><input type="text" name="phone" /></td>
+        </tr>
+      </table>
+      <input type="button" value="추가" onclick="tableVal();" />
+      <input type="button" value="삭제" onclick="deleteVal();" />
+    </form>
+    <hr />
+    <div id="addTable">
+      <table border="1" id="ctb">
+        <col width="100px" />
+        <col width="100px" />
+        <col width="300px" />
+        <col width="100px" />
+        <col width="100px" />
+        <thead>
+          <tr>
+            <th>I D</th>
+            <th>P W</th>
+            <th>ADDR</th>
+            <th>PHONE</th>
+            <th>DELETE</th>
+          </tr>
+        </thead>
+        <tbody id="addtr"></tbody>
+      </table>
+    </div>
+  </body>
+</html>
