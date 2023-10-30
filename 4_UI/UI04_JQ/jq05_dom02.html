@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      $(document).ready(function () {
+        // html의 모든코드를 읽고난후 함수실행준비가 완료되면 실행 한다
+        $("div").find("b").css({ "font-size": "30pt", color: "red" });
+        $("div").children("#chd").text("2. children()");
+        $("p").parent("div").css("background-color", "skyblue");
+        $("p>b").parents("body").css("background-color", "gray");
+        $("p").eq(1).next().css("color", "pink");
+        //parent : 해당선택자의 부모태그만 선택 , parents(): 해당선택자의 최상위부모까지 선택
+      });
+    </script>
+  </head>
+  <body>
+    <pre>
+        <b>find() : 선택한 엘리먼트의 자손들 중에 탐색하고자 하는 엘리먼트를 찾는다</b>
+        <b>children("selector"): 선택한 엘리먼트의 자식요소들 중에 탐색하고자하는 엘리먼트를 찾는다</b>
+        <b>parent()/parents() : 선택한 엘리먼트의 부모요소를 찾는다</b>
+        <b>next() : 선택한 엘리먼트의 다음에 따라오는 요소를 찾는다</b>
+    </pre>
+    <div>
+      <p><b>1</b></p>
+      <p id="chd">2</p>
+      <p>3</p>
+      <p>4</p>
+      <p>5</p>
+    </div>
+  </body>
+</html>
