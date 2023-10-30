@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      function a1() {
+        $("span").css("color", "red");
+        $("#view").text('$("span").css("color","red");');
+      }
+      function a2() {
+        $("#t1").css("color", "blue");
+        $("#view").text('$("#t1").css("color", "blue");');
+      }
+      function a3() {
+        $(".t2").css("color", "green");
+        $("#view").text('$(".t2").css("color", "green");');
+      }
+      function a4() {
+        //nth-child : 형제 요소 중에 n번째 요소 선택
+        $("li:nth-child(2)").css("color", "yellow");
+        $("#view").text("$('li:nth-child(2)').css('color','yellow')");
+        // odd : 홀수 , even : 짝수
+      }
+      function a5() {
+        $("li:first-child").css("color", "gray");
+        $("#view").text(' $("li:first-child").css("color", "gray")');
+      }
+      function a6() {
+        $("li:last-child").css("color", "skyblue");
+        $("#view").text('$("li:last-child").css("color", "skyblue")');
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>selecotr 표현식</h1>
+    <div>
+      <ul>
+        <li><span>tag로 선택하기</span></li>
+        <li id="t1">id로 선택하기</li>
+        <li class="t2">class로 선택하기</li>
+        <li>:nth-child(n/odd/even)로 선택하기</li>
+        <li>:first-child로 선택하기</li>
+        <li>:last-child로 선택하기</li>
+      </ul>
+    </div>
+    <hr />
+    <div><button onclick="a1();">태그선택(span)</button></div>
+    <div><button onclick="a2();">아이디선택(t1)</button></div>
+    <div><button onclick="a3();">클래스선택(t2)</button></div>
+    <div><button onclick="a4();">nth-child 선택</button></div>
+    <div><button onclick="a5();">first-child 선택</button></div>
+    <div><button onclick="a6();">last-child 선택</button></div>
+    <hr />
+    <h2>코드내용</h2>
+    <div id="view"></div>
+  </body>
+</html>
