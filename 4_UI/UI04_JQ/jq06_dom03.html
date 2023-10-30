@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        $("div")
+          .children()
+          .click(function () {
+            if ($(this).prop("tagName") == "SPAN") {
+              $(this).css("color", "blue");
+            }
+            if ($(this).is("p")) {
+              $(this).css("background-color", "pink");
+            }
+          });
+        $("b").click(function () {
+          $("p:eq(0)").add("span").css("color", "red"); // 선택자를 정할때도 eq() 함수를 사용할 수 있다.
+          //   ex) "p:eq(0)": p태그중에 첫번쨰
+          // add()를 이용하여 선택한태그 외에 추가로 다른태그도 같이 css속성을 변경함
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <p>add()</p>
+      <span>선택한 엘리먼트에 추가적으로 selector 표현식을 작성할때 사용</span>
+      <p>is()</p>
+      <b>선택한 엘리먼트들 중에 구하는 엘리먼트가 있는지 확인할 때 사용</b>
+    </div>
+  </body>
+</html>
