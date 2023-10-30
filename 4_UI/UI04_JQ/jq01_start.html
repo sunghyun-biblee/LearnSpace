@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script type="text/javascript" src="./js/jquery-3.7.1.js"></script> -->
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.7.1.min.js
+    "
+    ></script>
+    <script type="text/javascript">
+      function highlight() {
+        // id가 list01인 엘리먼트의 자식인 li를 찾아서, 그 중 첫번째 li 태그의
+        // 배경색을 pink로 바꾸자
+
+        // 순수 javascript 코드
+        // document.getElementById("list01").children[0].style.backgroundColor =
+        //   "pink";
+
+        // jQuery 코드
+        // jQuery("#list01>li").eq(0).css("background-color", "pink");
+        $("#list01>li").eq(0).css("background-color", "pink");
+        // $ : jQuery 단어를 $로 생략가능
+        // --------------------------
+
+        //li 태그 전부 배경색 변경
+        //JS
+        // let lis = document.getElementsByTagName("li");
+        // for (let i = 0; i < lis.length; i++) {
+        //   lis[i].style.backgroundColor = "skyblue";
+        // }
+        // JQ
+        $("li").css("background-color", "skyblue");
+      }
+
+      function showImg() {
+        $("img").show();
+      }
+
+      // 페이지 내의 코드를 모두 읽은 후 실행
+      //  1. window.onload=function(){}
+      //  2. $(document).ready(function(){});
+      //  3. $(function(){});
+      $(function () {
+        // img태그를 클릭하면 img를 보이지않게 처리
+        $("img").click(function () {
+          $(this).hide();
+        });
+      });
+      function resizeImg() {
+        // $("img").css("width,100px").css("opacity", "0.5");
+        $("img").css({ width: "100px", opacity: "0.5" });
+      }
+      function toggle() {
+        $("img").toggle();
+      }
+    </script>
+  </head>
+  <body>
+    <!-- jQuery : 자바스크립트 라이브러리 -->
+    <h1>jQuery 시작</h1>
+    <ul id="list01">
+      <li>1. 셀렉터 표현식</li>
+      <li>2. DOM탐색</li>
+      <li>3. 이벤트</li>
+      <li>4. 이펙트</li>
+      <li>5. Ajax</li>
+    </ul>
+    <button onclick="highlight();">리스트 강조하기</button>
+    <button onclick="showImg();">이미지 보이기</button>
+    <button onclick="resizeImg();">이미지 축소</button>
+    <button onclick="toggle();">이미지 숨기기/보이기</button>
+    <div><img src="../sample/image/1.jpg" alt="" /></div>
+    <style>
+      img {
+        width: 200px;
+        display: none;
+      }
+    </style>
+  </body>
+</html>
