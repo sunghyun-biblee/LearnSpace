@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        // js-onsubmit | jq-.submit(): form 태그에서 submit 이벤트 발생되면 실행
+        $("#signal").submit(function () {
+          if (($(".infobox").val() == "") | ($(".infobox").val == null)) {
+            $(".error").show();
+            return false;
+          }
+        });
+        // 체크박스가 전체 선택되어진 상태에서 하나라도 체크해제하면
+        // 전체 선택 버튼을 체크 해제
+        $("input[name=chk]").click(function () {
+          if (
+            $("input[name=chk]").length != $("input[name=chk]:checked").length
+          ) {
+            $("input[name=all]").prop("checked", false);
+          } else {
+            $("input[name=all]").prop("checked", true);
+          }
+        });
+
+        $("#confirm").click(function () {
+          // 버튼이 하나이상 선택되어 있는지 확인
+          if ($("input[name=chk]:checked").length == 0) {
+            alert("하나이상 선택하세요");
+          } else {
+            // each : 오브젝트나 배열에서 사용할 수 있는 반복함수
+            // 엘리먼트가 10개면 10번 실행 , 5개면 5번 실행
+            $("input[name=chk]:checked").each(function (i) {
+              console.log(i);
+              // eq() : 해당 인덱스 번호의 엘리먼트를 선택
+              let chk = $("input[name=chk]:checked").eq(i);
+              console.log(chk);
+
+              let book = chk.next().text();
+              let price = chk.val();
+              $("#res").append(book + "가격" + price + "<br>");
+            });
+          }
+        });
+      });
+
+      function allchk(bool) {
+        // $("input[name=chk]").each(function () {
+        //   // .each() : 선택한 태그들을 순회?한다
+        //   $(this).prop("checked", bool); // 여기서 this는 each함수에서 순회되고 있는 객체를 뜻함 ex) input 태그중 name이 chk인 태그들사이에서 n번째
+        // });
+
+        // 선택된 모든 태그에 동일한 작업을 적용할땐 each를 사용하지않고 바로 작업을 수행시킨다
+        $("input[name=chk]").prop("checked", bool);
+      }
+    </script>
+  </head>
+  <body>
+    <form action="" id="signal">
+      <div>
+        <span class="label">User Id</span>
+        <input type="text" class="infobox" name="userId" />
+        <span class="error" style="color: red; display: none"
+          >반드시 입력하세요</span
+        >
+      </div>
+      <input type="submit" class="submit" value="입력하기" />
+    </form>
+    <hr />
+    <fieldset style="width: 300px">
+      <legend>체크여부 확인</legend>
+      <input type="checkbox" name="all" onclick="allchk(this.checked);" />전체
+      선택 <br />
+      <input type="checkbox" name="chk" value="200" /> <b>java</b><br />
+      <input type="checkbox" name="chk" value="250" /> <b>javascript</b><br />
+      <input type="checkbox" name="chk" value="300" /> <b>Spring</b><br />
+
+      <input type="button" value="확인" id="confirm" />
+      <div id="res"></div>
+    </fieldset>
+  </body>
+</html>
