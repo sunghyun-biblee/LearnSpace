@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        // .click()과 동일한 성능
+        // .on('click',function)
+        $("b").bind("click", function () {
+          $("p").show();
+        });
+        $("p").click(function () {
+          let ele = $(this); // p 태그가 하나가 아니기 때문에 클릭한 태그를 알아내기위해 this 사용
+          ele.css("background-color", "pink");
+          ele.siblings("p").css("background-color", "white");
+          // siblings(): 같은 레벨(구역)에 있는 다른 요소들을 탐색
+
+          // : contains(text): text를 포함하고 있는 요소
+          if (ele.is("p:contains(slideUp)")) {
+            $("img").slideUp(); // 위로 접혀올라가는 애니메이션
+          }
+          if (ele.is("p:contains(slideDown)")) {
+            $("img").slideDown(); // 아래로 내려오는 애니메이션
+          }
+          if (ele.is("p:contains(slideToggle)")) {
+            $("img").slideToggle(); // up,down을 스위치처럼 실행하는 함수
+          }
+          if (ele.is("p:contains(fadeOut)")) {
+            $("img").fadeOut(); // 서서히 옅어져가는 애니메이션
+          }
+          if (ele.is("p:contains(fadeIn)")) {
+            $("img").fadeIn(); // 서서히 밝아지는 애니메이션
+          }
+          if (ele.is("p:contains(fadeTo)")) {
+            $("img").fadeTo(2000, 0.2); // 2초안에 투명도가 0.2로 변경된다
+          }
+          if (ele.is("p:contains(fadeToggle)")) {
+            $("img").fadeToggle();
+          }
+          if (ele.is("p:contains(animate)")) {
+            $("img")
+              .animate({ width: "500px", left: "500px", top: "0px" }, 2000)
+              .animate({ opacity: 0.1 }, 1000); //$("img").animate(변경하려는 속성, 시간);
+          }
+        });
+      });
+    </script>
+    <style>
+      img {
+        width: 200px;
+        position: absolute;
+        left: 200px;
+        top: 100px;
+      }
+      p {
+        width: 100px;
+        border: 1px solid red;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <b>이펙트</b>
+    <div>
+      <p>slideUp()</p>
+      <p>slideDown()</p>
+      <p>slideToggle()</p>
+      <p>fadeOut()</p>
+      <p>fadeIn()</p>
+      <p>fadeTo()</p>
+      <p>fadeToggle()</p>
+      <p>animate()</p>
+    </div>
+    <img src="../sample/image/1.jpg" alt="" />
+  </body>
+</html>
