@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        width: 100px;
+        height: 100px;
+        background-color: blanchedalmond;
+        cursor: pointer;
+      }
+    </style>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        // after, insertafter 둘다 기능은 똑같지만 삽입하는 위치가 다르다.
+        // after : A.after(B) : A뒤에 B를 추가 / insertAfter : A.insertAfter(B) : B 뒤에 A를 추가
+        $("button:eq(0)").click(function () {
+          $("#base").after("<div>새로운 엘리먼트(after)</div>");
+        });
+        $("button:eq(1)").click(function () {
+          $("<div> 새로운 엘리먼트(insertAfter)</div>").insertAfter("#base");
+        });
+
+        // after, insertafter 와 동일
+        // before , insertBefore 둘 다 기능은 동일하지만
+        // before : A.before(B) : A 앞에 B를 추가 / insertBefore : A.insertBefore(B) : B 앞에 A를 추가
+        $("button:eq(2)").click(function () {
+          $("#base").before("<div>새로운 엘리먼트(before)</div>"); // 선택자 앞에 생성
+        });
+        $("button:eq(3)").click(function () {
+          $("<div> 새로운 엘리먼트(insertBefore)</div>").insertBefore("#base"); //
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button>after()</button>
+    <button>insertafter()</button>
+    <button>before()</button>
+    <button>insertBefore()</button>
+    <br />
+    <hr />
+    <br />
+    <div id="base">
+      <p>외부 삽입</p>
+    </div>
+  </body>
+</html>
