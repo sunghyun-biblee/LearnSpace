@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	*{
+	margin:0px;
+	padding:0px;}
+	table,fieldset{width:400px;}
+	table tr:nth-child(odd){background-color:skyblue;}
+	body{
+	width:1000px; margin:50px auto;}
+</style>
+<script type="text/javascript" src="./js/jquery-3.7.1.js"></script>
+<script type="text/javascript">
+	$(function (){
+		$('#emp_search').click(function(){
+			let empid=$('input[name=empid]').val();
+			
+			if(empid.length==3){
+				$.ajax({
+					// 추가적인 속성 :async , complete
+					url:"emplist.xml",			// 전송(통신)할 페이지 주소(요청url) / 누구랑 , 어디랑 통신 할 것인지
+					method:"get",				// 서버에 전송하는 방식(get/post)
+					//data:{"id":"test"},		// 서버에 전송할 데이터
+					dataType:"xml",				// 서버로 부터 전송받을 데이터의 타입(json,xml,html,script....)
+					success:function(data){		// 통신에 성공했을 떄 실행
+						//코드 작성
+						//console.log(data)
+						let empInfo=$(data).find("EMPLOYEE_ID:contains("+empid+")").parent();
+						console.log(empInfo);
+						
+						// 검사진행
+						if((empInfo).is("ROW")){
+							$("table input").each(function(i){
+								$(this).val($(empInfo).children().eq(i).text());
+								console.log(i)
+								// this => empid / i => 0으로 시작해서 1씩 증가
+							})
+						}else{
+							alert("조회하신 사원의 정보가 없습니다!")
+						}
+					},	
+					error:function(request,error){			// 통신에 실패했을 때 실행
+						alert("error: "+ error+ "\n"+ "code: "+ request.status)
+					}			
+				});
+			}else{
+				alert("사원번호를 제대로 입력해주세요")
+			}
+		})
+	})
+</script>
+</head>
+<body>
+<!-- Ajax: Asynchronous Javascript And Xml -->
+<h1>데이터 가져오기</h1>
+<fieldset>
+<legend>사원정보조회</legend>
+<input type="text" name="empid">
+<input type="button" id="emp_search" value="조회">
+</fieldset>
+<table>
+ <tr>
+  <th>사원번호</th>
+  <td><input type="text" name="empNum"></td>
+ </tr>
+ 
+ <tr>
+  <th>이름 </th>
+  <td><input type="text" name="LastName"></td>
+ </tr>
+ 
+ <tr>
+  <th>이메일</th>
+  <td><input type="text" name="email"></td>
+ </tr>
+ 
+ <tr>
+  <th>전화번호</th>
+  <td><input type="text" name="phone"></td>
+ </tr>
+ 
+ <tr>
+  <th>입사일</th>
+  <td><input type="text" name="hire"></td>
+ </tr>
+ 
+</table>
+</body>
+</html>
