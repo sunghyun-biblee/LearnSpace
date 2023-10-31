@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .img1 {
+        width: 200px;
+        height: 200px;
+      }
+      .onoffimg {
+        display: none;
+      }
+      .addsize {
+        width: 300px;
+        height: 300px;
+        transition: all 1s;
+      }
+    </style>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        $("#btn").click(function () {
+          $("img").toggleClass("onoffimg"); // 클래스 onoffimg를 추가하였다가 뺐다가를 반복하여 이미지를 보이지않게 보이게 만들어준다.
+          // + addClass('클래스명'), - removeClass('클래스명')
+        });
+        $("img").hover(function () {
+          if ($(this).hasClass("addsize")) {
+            $(this).removeClass("addsize").attr("title", "이미지 축소");
+          } else {
+            $(this).addClass("addsize");
+          }
+        });
+        // document.getElement~().classList.add('클래스1 클래스2')
+        // document.getElement~().classList.remove('클래스1 클래스2')
+      });
+    </script>
+  </head>
+  <body>
+    <button id="btn">이미지 on/off</button>
+    <br />
+    <hr />
+    <br />
+    <div>
+      <!-- titlee 속성 : 마우스를 올리게되면 해당설명을 부여-->
+      <img src="../sample/image/1.jpg" title="이미지1번" class="img1" alt="" />
+      <img src="../sample/image/2.jpg" title="이미지2번" class="img1" alt="" />
+      <img src="../sample/image/3.jpg" title="이미지3번" class="img1" alt="" />
+    </div>
+  </body>
+</html>
