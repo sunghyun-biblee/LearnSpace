@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 150px;
+        height: 150px;
+        float: left;
+      }
+      #menubox {
+        position: relative;
+      }
+      #menu {
+        overflow: auto;
+      }
+      .sel {
+        width: 140px;
+        height: 140px;
+        border: 5px dotted skyblue;
+        position: absolute;
+        left: 150px;
+      }
+      button {
+        width: 150px;
+        height: 50px;
+        margin-left: 150px;
+      }
+    </style>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        $("button").click(function () {
+          $("img").toggleClass("active");
+
+          if ($("button").text() == "start") {
+            $("button").text("stop");
+          } else {
+            $("button").text("start");
+            alert(
+              "오늘의 캐릭터는 " + $("img:eq(1)").attr("title") + " 입니다."
+            );
+          }
+        });
+
+        //특정 시간마다 특정 함수 or 코드 실행
+        window.setInterval(function () {
+          let div = $("#menu");
+          $(".active").first().appendTo(div); // 클래스가 active인 태그들 중 첫번째 태그를 뒤로 보낸다.
+          // active 클래스가 사라지면 함수가 실행하지 않기때문에 멈춤
+        }, 600);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>이미지 선택</h1>
+
+    <div id="menubox">
+      <div class="sel"></div>
+      <div id="menu">
+        <img src="../sample/image/1.jpg" alt="" title="잘자콩" />
+        <img src="../sample/image/2.jpg" alt="" title="힘내콩" />
+        <img src="../sample/image/3.jpg" alt="" title="피카츄" />
+      </div>
+    </div>
+    <button>start</button>
+  </body>
+</html>
