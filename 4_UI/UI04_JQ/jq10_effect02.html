@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main_menu {
+        width: 300px;
+      }
+      .sub_menu1 {
+        cursor: pointer;
+      }
+      .sub_menu2 {
+        cursor: default;
+        display: none;
+      }
+    </style>
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script>
+      $(function () {
+        $("b").click(function () {
+          // $(this).next().slideToggle(); // 클릭된 b 태그의 다음 태그인 ul태그가 선택됨
+          // $(this).parent().siblings().find("ul").slideUp(); // 선택한 b 태그이외에 펼쳐진 b태그들은 다시 접어서 안보이게 만든다
+          $(this)
+            .next()
+            .slideToggle()
+            .end() // ! end(): 이전 요소를 찾음 / ex) next()이전의 요소를 찾아 그 태그로부터 parent()함수부터 다시 실행
+            .parent()
+            .siblings()
+            .find("ul")
+            .slideUp();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>메뉴만들기</p>
+    <ul type="square" class="main_menu">
+      <li class="sub_menu1">
+        <b>(1) css 선택자</b>
+        <ul type="circle" class="sub_menu2">
+          <li>tag로 선택하기</li>
+          <li>id로 선택하기</li>
+          <li>class로 선택하기</li>
+          <li>:nth-child로 선택하기</li>
+          <li>:first-child 선택하기</li>
+          <li>:last-child 선택하기</li>
+        </ul>
+      </li>
+
+      <li class="sub_menu1">
+        <b>(2) 속성 선택자</b>
+        <ul type="circle" class="sub_menu2">
+          <li>[attr]</li>
+          <li>[attr=value]</li>
+        </ul>
+      </li>
+
+      <li class="sub_menu1">
+        <b>(3) form 선택자</b>
+        <ul type="circle" class="sub_menu2">
+          <li>input:</li>
+        </ul>
+      </li>
+
+      <li class="sub_menu1">
+        <b>(4) 사용자정의 선택자</b>
+        <ul type="circle" class="sub_menu2">
+          <li>:eq(n)</li>
+          <li>:first</li>
+          <li>:last</li>
+          <li>:even/:odd</li>
+          <li>:parent</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
