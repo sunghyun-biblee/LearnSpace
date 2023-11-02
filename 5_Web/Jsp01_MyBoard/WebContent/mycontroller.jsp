@@ -27,7 +27,7 @@
 			페이지 이동 방법
 			1. forward : request,response 객체가 유지된다.
 						 이용된 url이 화면에 안보인다.
-						 1) <jsp:forsward>
+						 1) <jsp:forward>
 						 2) pageContext.forward()
 						 3) requestDipatcher - servlet에서
 			2. redirect : 새로 페이지를 요청한 것과 같은 방식으로 페이지 이동
