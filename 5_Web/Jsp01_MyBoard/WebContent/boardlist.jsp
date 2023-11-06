@@ -35,7 +35,8 @@
 	<!-- 리스트의 각 번호 이름 제목 날짜를 가져옴 -->
 		<td><%=list.get(i).getSeq() %></td> 
 		<td><%=list.get(i).getWriter() %></td>
-		<td><%=list.get(i).getTitle() %></td>
+		<td><a href="mycontroller.jsp?command=boarddetail&seq=<%=list.get(i).getSeq()%>"><%=list.get(i).getTitle() %></a></td>
+		<%-- seq 의 primary key값을 이용하여 조회하고자 하는 seq번호를 가져와 해당번호의 내용을 출력--%>
 		<td><%=list.get(i).getRegdate() %></td>
 	</tr>
 <%
