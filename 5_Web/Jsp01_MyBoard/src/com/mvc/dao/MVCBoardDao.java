@@ -54,7 +54,39 @@ public class MVCBoardDao {
 	}
 	// 상세 조회
 	public MVCBoardDto selectOne(int seq) {
-		return null;
+		// 준비
+		Connection con = getConnection();
+		PreparedStatement pstm=null;
+		ResultSet rs= null;
+		MVCBoardDto res=new MVCBoardDto(); // resultset에 담겨있는 객체를 옮겨닮을 공간
+		
+		String sql="SELECT * FROM MVCBOARD WHERE SEQ=?";
+		
+		try {
+			pstm=con.prepareStatement(sql);
+			pstm.setInt(1, seq);
+			System.out.println("query 준비 : "+sql);
+			
+			rs=pstm.executeQuery();
+			System.out.println("query 실행 및 리턴");
+			
+			while(rs.next()) {
+				res.setSeq(rs.getInt("SEQ"));
+				res.setWriter(rs.getString(2));
+				res.setTitle(rs.getString(3));
+				res.setContent(rs.getString(4));
+				res.setRegdate(rs.getDate(5));
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(con);
+			close(pstm);
+			close(rs);
+		}
+		
+		return res;
 	}
 	
 	// 추가
@@ -92,10 +124,65 @@ public class MVCBoardDao {
 	}
 	// 수정
 	public int update(MVCBoardDto dto) {
-		return 0;
+		Connection con = getConnection();
+		PreparedStatement pstm=null;
+		int res=0;
+		
+		String sql="UPDATE MVCBOARD SET TITLE=?, CONTENT=? WHERE SEQ=? ";
+		
+		try {
+			pstm=con.prepareStatement(sql);
+			pstm.setString(1,dto.getTitle());
+			pstm.setString(2,dto.getContent());
+			pstm.setInt(3, dto.getSeq());
+			System.out.println("query 준비: "+sql);
+			
+			res=pstm.executeUpdate();
+			System.out.println("query 실행 ");
+			if(res>0) {
+				commit(con);
+				rollback(con); // 지금 트랜잭션에서 하나만 실행하기때문에 실패해도 결과가 바뀌는게 없기때문에 굳이 사용 안해도 된다
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("3/4 단계 에러");
+		} finally {
+			close(con);
+			close(pstm);
+		}
+		
+		return res;
 	}
 	// 삭제
-	public int delete(MVCBoardDto dto) {
-		return 0;
+	public int delete(int seq) {
+		Connection con = getConnection();
+		PreparedStatement pstm=null;
+		int res=0;
+		
+		String sql="DELETE FROM MVCBOARD WHERE SEQ=?";
+		
+		try {
+			pstm=con.prepareStatement(sql);
+			pstm.setInt(1,seq);
+			System.out.println("query 준비 :" +sql);
+			
+			res=pstm.executeUpdate();
+			System.out.println("query 실행");
+			if(res>0) {
+				commit(con);
+				rollback(con);
+			}
+		} catch (SQLException e) {
+			System.out.println("3/4 단계 에러");
+			e.printStackTrace();
+		} finally {
+			close(con);
+			close(pstm);
+			System.out.println("db 종료");
+		}
+		
+		
+		return res;
 	}
 }
