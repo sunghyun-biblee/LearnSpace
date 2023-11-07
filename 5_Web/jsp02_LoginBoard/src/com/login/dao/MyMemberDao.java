@@ -1,13 +1,18 @@
 package com.login.dao;
 
+import static common.JDBCTemplate.close;
 import static common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.login.dto.MyMemberDto;
+import com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare;
+import com.mysql.cj.xdevapi.Result;
 
 public class MyMemberDao {
 	// 로그인 기능
@@ -55,6 +60,142 @@ public class MyMemberDao {
 			System.out.println("db 종료");
 		}
 		
+		return res;
+	}
+	
+	public List<MyMemberDto> selectAll() {
+		Connection con =getConnection();
+		PreparedStatement pstm=null;
+		ResultSet rs=null;
+		List<MyMemberDto> res=new ArrayList<MyMemberDto>();
+		
+		
+		String sql="SELECT * FROM MYMEMBER ORDER BY MYNO DESC";
+		try {
+			pstm=con.prepareStatement(sql);
+			System.out.println("query 준비:"+ sql);
+			rs=pstm.executeQuery();
+			System.out.println("query 실행");
+			
+			while(rs.next()) {
+				MyMemberDto tmp=new MyMemberDto();
+				tmp.setMyno(rs.getInt(1));
+				tmp.setMyid(rs.getString(2));
+				tmp.setMypw(rs.getString(3));
+				tmp.setMyname(rs.getString(4));
+				tmp.setMyaddr(rs.getString(5));
+				tmp.setMyphone(rs.getString(6));
+				tmp.setMyemail(rs.getString(7));
+				tmp.setMyenabled(rs.getString(8));
+				tmp.setMyrole(rs.getString(9));
+				
+				res.add(tmp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("3/4단계 에러");
+		} finally{
+			close(rs);
+			close(pstm);
+			close(con);
+			System.out.println("db종료");
+		}
+		return res;
+	}
+	
+	// id 중복 확인
+	public String idChk(String id){
+		Connection con = getConnection();
+		PreparedStatement pstm=null;
+		ResultSet rs=null;
+		String res=null;
+		
+		String sql="SELECT * FROM MYMEMBER WHERE MYID=?";
+		
+		try {
+			pstm=con.prepareStatement(sql);
+			pstm.setString(1, id); // 매개변수로 받은 id를 참조
+			
+			rs=pstm.executeQuery();
+			
+			while(rs.next()) {
+				res=rs.getString(2); // id 값만 가져옴
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(con);
+			close(pstm);
+		}
+		
+		return res;
+	}
+	
+	// 회원가입
+	public int insertUser(MyMemberDto dto) {
+		Connection con = getConnection();
+		PreparedStatement pstm=null;
+		int res=0;
+		
+		String sql=" INSERT INTO MYMEMBER VALUES(NULL,?,?,?,?,?,?,'Y','USER') ";
+		
+		try {
+			pstm=con.prepareStatement(sql);
+			pstm.setString(1, dto.getMyid());
+			pstm.setString(2, dto.getMypw());
+			pstm.setString(3, dto.getMyname());
+			pstm.setString(4, dto.getMyaddr());
+			pstm.setString(5, dto.getMyphone());
+			pstm.setString(6, dto.getMyemail());
+			System.out.println("query 준비"+sql);
+			
+			res=pstm.executeUpdate();
+			System.out.println("query 실행");
+			
+			if(res>0) {
+				commit(con);
+				rollback(con);
+			}
+				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(con);
+			close(pstm);
+			System.out.println("db 종료");
+		}
+		
+		return res;
+	}
+	
+	public int deleteUser(int myno) {
+		Connection con= getConnection();
+		PreparedStatement pstm=null;
+		int res=0;
+		
+		String sql=" UPDATE MYMEMBER SET MYENABLED='N' WHERE MYNO=? ";
+		
+		try {
+			pstm=con.prepareStatement(sql);
+			pstm.setInt(1, myno);
+			System.out.println("query 준비:"+ sql);
+			
+			res=pstm.executeUpdate();
+			System.out.println("query 실행");
+			
+			if(res>0) {
+				commit(con);
+				rollback(con);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("3/4단계 에러");
+		} finally {
+			close(con);
+			close(pstm);
+			System.out.println("db 종료");
+		}
 		return res;
 	}
 }
