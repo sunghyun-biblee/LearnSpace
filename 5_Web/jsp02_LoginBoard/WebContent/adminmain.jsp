@@ -22,8 +22,9 @@
 %>
 	<div>
 		<span><%=dto.getMyname() %>님 환영합니다.(등급:<%=dto.getMyrole() %>)</span> <!-- session에 담긴 데이터들을 가져와서 출력 -->
+		<a href="logincontroller.jsp?command=logout">로그아웃</a>
 	</div>
 
-
+<a href="logincontroller.jsp?command=userlistall">회원 목록</a>
 </body>
 </html>
