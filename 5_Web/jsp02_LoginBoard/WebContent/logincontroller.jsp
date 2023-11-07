@@ -66,6 +66,90 @@
 		}
 		
 		
+	}else if(command.equals("userlistall")){
+		// 1. 데이터 준비
+		List<MyMemberDto> list = dao.selectAll();
+		
+		// 2. 페이지 전환
+		request.setAttribute("list", list);
+		pageContext.forward("userlistall.jsp");
+		
+		// pageContext: 현재 jsp페이지 의 context를 나타내고,
+		// jsp 페이지와 관련된 다른 내장 객체를 얻거나
+		// 요청 (request)과 응답(response)의 제어권을 다른페이지로 넘겨주는데 사용
+		
+	}else if(command.equals("logout")){
+		
+		session.invalidate(); //session 정보 삭제
+		response.sendRedirect("index.jsp"); //서버가 이동경로 설정
+	}else if(command.equals("registform")){
+		response.sendRedirect("registform.jsp");
+	}else if(command.equals("idchk")){
+		String myid=request.getParameter("id");
+		String res=dao.idChk(myid);
+		
+		boolean idnotused=true;
+		if(res !=null){
+			idnotused=false;
+		}
+		response.sendRedirect("idchk.jsp?idnotused="+idnotused);
+	}else if(command.equals("insertuser")){
+		String myid = request.getParameter("myid");
+		String mypw = request.getParameter("mypw");
+		String myname = request.getParameter("myname");
+		String myaddr = request.getParameter("myaddr");
+		String myphone = request.getParameter("myphone");
+		String myemail = request.getParameter("myemail");
+		
+		MyMemberDto dto= new MyMemberDto();
+		dto.setMyid(myid);
+		dto.setMypw(mypw);
+		dto.setMyname(myname);
+		dto.setMyaddr(myaddr);
+		dto.setMyphone(myphone);
+		dto.setMyemail(myemail);
+
+		int res= dao.insertUser(dto);
+		if(res>0){
+%>
+		<script type="text/javascript">
+			alert("회원가입 성공")
+			location.href="index.jsp"
+		</script>
+	
+<%
+		}else {
+%>
+		<script type="text/javascript">
+		alert("회원가입 실패")
+			location.href="logincontroller.jsp?command=registform"
+		</script>
+<%			
+		}
+	}else if(command.equals("deleteuser")){
+		int myno=Integer.parseInt(request.getParameter("myno"));
+		
+		int res=dao.deleteUser(myno);
+		
+		if(res>0){
+%>
+		<script type="text/javascript">
+			alert("탈퇴 되었습니다")
+			location.href='logincontroller.jsp?command=logout';
+			
+		</script>
+	
+<%
+		}else{
+%>
+			<script type="text/javascript">
+				alert("다시 시도하십시오")
+				location.href='usermain.jsp'
+			</script>
+<%
+			
+			
+		}
 	}
 %>
 </body>
