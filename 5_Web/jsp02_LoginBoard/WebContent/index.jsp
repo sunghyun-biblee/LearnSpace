@@ -8,6 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function registForm(){
+		location.href="logincontroller.jsp?command=registform"
+	}
+</script>
 </head>
 <body>
 	<div style="width:300px;">
@@ -26,8 +31,8 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-					<input type="submit" value="login">
-					<input type="button" value="regist" onclick="">
+					<input type="submit" value="로그인">
+					<input type="button" value="회원가입" onclick="registForm();">
 					</td>
 				</tr>
 			</table> <!-- id,pw를 작성후 submit을 누르면 id값과 pw값 command값 3개가 전달된다. -->
