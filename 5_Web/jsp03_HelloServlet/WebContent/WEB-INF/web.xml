@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="5.0">
+  <!-- 프로젝트 이름으로 기본설정, 우리가 만든 웹 어플리케이션 이름을 저장 -->
+  <display-name>jsp03_HelloServlet</display-name>
+  
+  <!-- 웹 어플리케이션 실행 시 가장 먼저 보여줄 페이지를 정의, 시작페이지 설정 -->
+  <welcome-file-list>
+    <welcome-file>home.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 어플리케이션 전체의 전역적인 파라미터 설정 -->
+  <context-param>
+ 	<param-name>url</param-name>
+ 	<param-value>jdbc:mysql://localhost:3306/multi</param-value>
+  </context-param>
+  
+  <servlet> <!--  서블릿 생성 -->
+  	<servlet-name>HelloServlet</servlet-name>
+  	<servlet-class>com.hello.controller.HelloController</servlet-class>
+  	
+  	<!-- 특정 서블릿에서 처리하기 위한 값을 정의. init()메서드가 실행될 때 해당 값을 사용 가능하다. -->
+  	<init-param>
+  		<param-name>driver</param-name>
+  		<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  	</init-param>
+  </servlet>
+  
+  <!--  servlet 과 url-parttern을 맵핑 -->
+  <servlet-mapping>
+  	<servlet-name>HelloServlet</servlet-name>
+  	<url-pattern>/HelloServlet.do</url-pattern> <!-- url-pattern 내용앞에 "/"는 필수로 적어야한다 -->
+  </servlet-mapping>
+  
+  <!-- 
+  <filter>
+  	
+  </filter>
+  
+  <filter-mapping>
+  	
+  </filter-mapping>
+   -->
+  
+</web-app>
