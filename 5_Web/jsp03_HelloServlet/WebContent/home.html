@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Home.html</h1>
+<!-- <a href="controller.jsp?command=asdasd"></a>-->
+<a href="HelloServlet.do?command=hello">hello</a>
+
+<hr>
+<form action="HelloServlet.do" method="post">
+	<input type="hidden" name="command" value="helloPost">
+	<input type="submit" value="send(post)">
+</form>
+</body>
+</html>
