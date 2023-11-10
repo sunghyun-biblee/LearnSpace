@@ -127,7 +127,30 @@ public class MyMVCDaoImpl implements MyMVCDao {
 
 	@Override
 	public boolean delete(Connection con, int seq) {
-		return false;
+		PreparedStatement pstm=null;
+		int res=0;
+		
+		try {
+			pstm=con.prepareStatement(deleteSql);
+			pstm.setInt(1, seq);
+			System.out.println("query 준비: "+deleteSql);
+			
+			res=pstm.executeUpdate();
+			System.out.println("query 실행");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("3/4 단계 에러");
+			
+		} finally {
+			close(pstm);
+		}
+		
+		
+		
+		
+		
+		return (res>0)?true:false;
 	}
 
 }
