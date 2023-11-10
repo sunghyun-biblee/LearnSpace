@@ -77,7 +77,30 @@ public class MyMVCBizImpl implements MyMVCBiz{
 
 	@Override
 	public boolean delete(int seq) {
-		return false;
+		Connection con = getConnection();
+		boolean res= true;
+		// 여러 트랜잭션을 수행을 동시에 진행한다하면 , 쿼리문이 실행되는와중에 예외가 발생할걸 예방하기 위해서 (나의 의도와 다른 결과값이 나올 수 있다) try / catch문 안에 작성
+		// 하나라도 예외가 발생하면 rollback 해주기위해 
+		try {
+			res=dao.delete(con, seq);
+			if(res) {  
+				commit(con);
+			}else {
+				rollback(con);
+			}
+		} catch(Exception e) {
+			rollback(con);
+			e.printStackTrace();
+		} finally {
+			close(con);
+			System.out.println("db 종료");
+		}
+		
+		
+		
+		
+		
+		return res;
 	}
 
 }
