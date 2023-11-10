@@ -36,7 +36,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="수정" onclick="location.href='controller.do?command=updateform&seq=${dto.seq}'">
-				<input type="button" value="삭제" onclick="">
+				<input type="button" value="삭제" onclick="location.href='controller.do?command=delete&seq=${dto.seq}'">
 				<input type="button" value="목록" onclick="location.href='controller.do?command=list'">
 			</td>
 			
