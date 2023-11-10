@@ -90,6 +90,22 @@ public class MyMVCServlet extends HttpServlet {
 				str="<script type='text/javascript'>"+"alert('글 수정 실패');"+"location.href='controller.do?command=updateform&seq="+seq+"';"+"</script>";
 				out.println(str);
 			}
+		}else if(command.equals("delete")) {
+			int seq= Integer.parseInt(request.getParameter("seq"));
+			
+			boolean res=biz.delete(seq);
+			
+			if(res) {
+				request.setAttribute("msg", "글 삭제 성공");
+				request.setAttribute("url", "controller.do?command=list");
+			}else {
+				request.setAttribute("msg", "글 삭제 실패");
+				request.setAttribute("url", "controller.do?command=detail&seq="+seq);
+			}
+			
+			RequestDispatcher dis=request.getRequestDispatcher("res.jsp");
+			dis.forward(request, response);
+			
 		}
 		
 		
