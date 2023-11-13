@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="banana" class="com.test01.MessageBeanImpl"></bean>
+	
+	<bean id="apple" class="com.test01.MessageBeanImpl">
+		<constructor-arg><value>apple</value></constructor-arg>
+		<constructor-arg value="10000"></constructor-arg>
+	</bean>	
+	
+	<!-- 생성자를 만들때 작성하였던 순서대로 값을 기입하여도 되나 , 인덱스를 사용하여 각 파라미터의 순서를 정해준다 -->
+	<bean id="mango" class="com.test01.MessageBeanImpl">
+		<constructor-arg index="1" value="15000"></constructor-arg>
+		<constructor-arg index="0" value="mango"></constructor-arg>
+	</bean>
+</beans>
