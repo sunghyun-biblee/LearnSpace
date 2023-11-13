@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- name속성을 이용해서 해당하는 파라미터로 가르켜줄 수 있다. -->
+	<bean id="kim" class="com.test02.Address">
+		<constructor-arg name="name" value="김김김"></constructor-arg>
+		<constructor-arg name="addr" value="서울시 서울"></constructor-arg>
+		<constructor-arg name="phone" value="010-0101-1010"></constructor-arg>
+	</bean>
+
+<!-- 필드와 setter 이름이 다를시 setter 이름우선으로 작성해야한다 -->
+<!-- name 값은 setter의 이름  / name값의 맨 앞에글자는 대문자로 작성하여도 , 코드수행시 대문자로 변환하면서 수행하기때문에 똑같이 값을 가져옴 그래도 대소문자 구분해서 작성-->
+	<bean id="biblee" class="com.test02.Address">
+		<property name="name" value="biblee"></property>
+		<property name="addr" value="대구광역시 대구"></property>
+		<property name="phone" value="010-5555-5555"></property>
+	</bean>
+</beans>
