@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="lee" class="com.test02.Emp">
+		<constructor-arg name="name" value="biblee"></constructor-arg>
+		<constructor-arg name="salary" value="200000"></constructor-arg>
+	</bean>
+	<bean id="kim" class="com.test02.Emp">
+		<constructor-arg name="name" value="biblee2"></constructor-arg>
+		<constructor-arg name="salary" value="300000"></constructor-arg>
+	</bean>
+	
+	<bean id="park" class="com.test02.Developer">
+		<constructor-arg index="0" value="parkbible"></constructor-arg>
+		<constructor-arg index="1" value="400000"></constructor-arg>
+		<property name="dept" value="개발"></property>
+	</bean>
+	<bean id="cho" class="com.test02.Engineer">
+		<constructor-arg index="0" value="chobible"></constructor-arg>
+		<constructor-arg index="1" value="400000"></constructor-arg>
+		<property name="engi" value="기술"></property>
+	</bean>
+</beans>
