@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="favoriteFood" name="favoriteFood" class="com.test02.Food"> <!--  name 속성 값도 추가 가능 -->
+		<property name="name" value="회"></property>	
+		<property name="price" value="15000"></property>	
+	</bean>
+		
+	<bean id="unFavoriteFood" class="com.test02.Food">
+		<property name="name" value="복숭아"></property>	
+		<property name="price" value="5000"></property>	
+	</bean>
+		
+	<bean id="myFood" class="com.test02.MyFood" autowire="byType"></bean>
+		<!-- 
+			 byName : setter(field)랑 같은 id(name)의 bean이 자동 할당 > myfood에 favorite, unfavorite food 가 있기때문에 자동으로 할당
+			 constructor : 생성자의 파라미터와 같은 id(name)의 bean이 자동 할당 
+			 byType : setter의 parameter와 같은 type의 bean을 자동 할당 > 대신, 같은 타입의 빈이 중복된다면 예외발생
+		-->
+		
+</beans>
