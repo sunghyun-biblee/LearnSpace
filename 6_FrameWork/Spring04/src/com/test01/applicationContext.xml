@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="myClass" class="com.test01.MyClass"></bean>
+	
+	<!-- 내가만든 class가 아니더라도 참조하여 bean을 생성할 수 있다. -->
+	<bean id="date" class="java.util.Date"></bean>
+	
+	<!-- id가 beanTest인 BeanTest 클래스 bean 생성 -->
+	<bean id="beanTest" class="com.test01.BeanTest">
+		<!-- 1. public BeanTest (Date date) 호출 -->
+		<constructor-arg ref="date"></constructor-arg>
+		
+		<!-- 2. public void setMyclass(MyClass myclass) 호출 -->
+		<!-- setter 이름이 Myclass인 메소드에게 id값이 myclass인 bean을 가져와서 매개변수로 값을 전달 -->
+		<property name="myclass" ref="myClass"></property>
+		
+		<!-- 3. public void setDate(Date date) 호출 -->
+		<property name="date" ref="date"></property>
+
+		<!-- 4. public void setNumber(int num) 호출 -->
+		<property name="number" value="8"></property>
+		
+		<!-- 5. public void setArray(String arr[]) 호출 -->
+		<property name="array" >
+			<array>
+				<value>aiblee</value>
+				<value>biblee</value>
+				<value>ciblee</value>
+				<value>diblee</value>
+				<value>eiblee</value>
+			</array>
+		</property>
+		
+		<!-- 6. public void setList(List<String> list) 호출 -->
+		<property name="list">
+			<list>
+			<!-- value는 반드시 참조시키거나 값을 넣어주어야 한다. -->
+			<!--  set 도 똑같이 value 값을 넣어주거나, 참조시켜야한다. -->
+				<value>fiblee</value>
+				<value>giblee</value>
+				<value>hiblee</value>
+				<value>iiblee</value>
+				<value>jiblee</value>
+			</list>
+		</property>
+		
+		<!-- 7. public void setMap(Map<String,String> map) 호출 -->
+		<property name="map">
+			<map>
+			<!--  맵에 키와 벨류를 묶어서 담당하는것을 entry(엔트리)라고 한다. -->
+			<!--  엔트리 태그안에 키와 벨류를 넣어줄 수 있다. -->
+				<entry>
+					<key><value>1</value></key>
+					<value>한 여름 </value>
+				</entry>
+				<entry key="2" value="밤의 꿈"></entry>
+			</map>
+		</property>
+		
+		<!-- 8. public void setScore(List<Score> list) 호출 -->
+		<property name="score">
+		<!-- list 태그안에 작성하기때문에 bean으로 만든 객체가 list에 바로 저장됨 -->
+			<list>
+			<!-- 객체를 생성할땐 bean으로 생성하고 property로 값을 넣어준다 -->
+				<bean class="com.test01.Score">
+					<property name="name" value="biblee"></property>
+					<property name="point" value="16"></property>
+				</bean>
+				<!-- ref 태그를 사용하여 외부에 있는 bean을 참조 할 수 있다. / bean의 아이디를 작성 -->
+				<ref bean="score"></ref>	
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 태그밖에서 새로 bean을 생성하여 참조시켜줄 수 있다. / bean의 작성순서는 크게 중요하지 않다-->
+	<bean id="score" class="com.test01.Score">
+		<constructor-arg value="bbiblee"></constructor-arg>
+		<constructor-arg value="17"></constructor-arg>
+	</bean>
+</beans>
