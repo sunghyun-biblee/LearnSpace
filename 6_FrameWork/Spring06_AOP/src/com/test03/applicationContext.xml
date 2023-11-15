@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<bean id="woman" class="com.test03.Woman"></bean>
+	<bean id="man" class="com.test03.Man"></bean>
+	<bean id="myAspect" class="com.test03.MyAspect"></bean>
+	
+	
+	<!-- aop 설정 -->
+	<aop:config>
+		<aop:aspect ref="myAspect"> <!-- 미리만둔 myAspect를 참조하여 advice 생성  -->
+			<aop:before method="before" pointcut="execution(public * *(..))"/> <!-- method : 메소드 이름을 작성 -->
+			<aop:after method="after" pointcut="execution(public * *(..))"/>
+			 <!--     pointcut : execution([수식어] 리턴타입 [클래스이름].메소드이름(파라미터 : 매개변수값)
+			 					 execution(public * *(..));
+			 					 execution(public * com.test04.Ttest.test(..))
+			 		- pointcut을 저정할 때 사용하는 문법
+
+					- execution(접근제한자 /리턴타입/ 클래스이름or메서드이름(매개변수))
+
+					- 접근 제한자 : public만 지원된다.
+
+					- 리턴타입 : 메서드의 매개변수 타입
+
+					- 클래스 이름 : 패키지를 포함한 클래스 이름
+
+					- 메서드 이름 : 메서드의 이름
+
+					- 매개변수 : 매개변수의 형태 / (..) > 0개 이상 / (*) > 1개 / (*,*) > 2개 / (Integer, ..)  > 1개 이상의 파라미터를 가짐. 첫번째 파라미터형은 Integer형이여야 함
+			  -->
+			  <!-- execution(public * com.test03.Woman.classWork(..)) -->
+		</aop:aspect>
+	</aop:config>
+	
+	
+	
+</beans>
