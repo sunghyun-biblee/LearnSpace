@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!--  객체를 생성하는것도 aop 설정의 일부  -->
+	<!--  비공통부분 cc - target 생성 -->
+	<bean id="woman" class="com.test05.Woman"></bean>
+	<bean id="man" class="com.test05.Man"></bean>
+	
+	<!-- 공통부분 ccc - advice 생성 -->>
+	<bean id="myAspect" class="com.test05.MyAspect"></bean>
+
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy> <!-- myaspect에 작성된 메소드들의 프록시가 자동으로 생성됨 -->
+</beans>
