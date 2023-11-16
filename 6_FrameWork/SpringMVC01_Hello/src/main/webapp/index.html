@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="home.do">home</a>
+	<hr>
+	<h2><a href="command.do?name=spring&addr=서울&phone=010-1234-1234">GETCOMMAND</a></h2> <!--  ?: 뒤에는 파라미터값을 추가하겠다 & : 그리고라는 뜻 > 더 추가하겠다 -->
+	
+	<form action="command.do" method="post">
+	<!-- 요청방식이 post이기떄문에 기존에 사용하던 메소드를 사용할 수 없다 (기존 메소드는 get 방식만 요청처리) > 405 에러 > post방식의 메소드 생성하여 사용 -->
+	<!-- 기본생성자가 생성되고 거기에 데이터들이 담긴채로 전달된다. 
+	> 어떻게 저장되느냐  > setter 메소드를 호출하여 사용 
+	> setter메소드는 어디서 오느냐  > name을 기반으로 name값과 동일한 setter 메소드가 있으면 호출하여 객체에 저장 -->
+		<table>
+			<tr>
+				<th>name</th>
+				<td><input type="text" name="name"> </td>
+			</tr>
+			<tr>
+				<th>addr</th>
+				<td><input type="text" name="addr"> </td>
+			</tr>
+			<tr>
+				<th>phone</th>
+				<td><input type="text" name="phone"> </td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="postCommand"></td>
+			</tr>
+		</table>
+		
+	</form>
+</body>
+</html>
