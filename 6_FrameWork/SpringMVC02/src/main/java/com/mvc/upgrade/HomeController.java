@@ -69,11 +69,42 @@ public class HomeController {
 		
 		if(res>0) {
 			return "redirect:list.do"; // mvclist를 작성하게되면 model이 list데이터를 받아 화면에 출력하게되는데 list라는 데이터가 없이 이동하기떄문에 오류가 발생한다
-							  		   // list.do를 리턴하게되면 WEB-INF/views/list.do.jsp 로 호출되기때문에 오류발생
+							  		   // list.do를 리턴하게되면 WEB-INF/views/list.do.jsp 로 호출되기때문에 오류발생 > DispatcherServlet 은 viewResolver로 보냄 > servlet-context.xml을 거쳐감
 									   // redirect : list.do를 핸들러맵핑에서 다시 어떤 컨트롤로 처리하나 재탐색 후 해당 하는 컨트롤러의 메소드가 동작 (메소드 재시작)
 		}else {
 			return "redirect: insertform.do";
 		}
 		
+	}
+	@RequestMapping("/updateform.do")
+	public String updateForm(Model model, int myno) {
+		logger.info("UPDATE FORM");
+		
+		model.addAttribute("dto", biz.selectOne(myno));
+		return "mvcupdate";
+	}
+	
+	@RequestMapping("/updateres.do")
+	public String updateRes(BoardDto dto) {
+		logger.info("UPDATE RES");
+		
+		int res = biz.update(dto);
+		if(res>0) {
+			return "redirect:detail.do?myno="+dto.getMyno();
+		}else {
+			return "redirect:updateform.do?myno="+dto.getMyno();
+		}
+	}
+	
+	@RequestMapping("/delete.do")
+	public String delete(int myno) {
+		logger.info("DELETE");
+		int res = biz.delete(myno);
+		
+		if(res>0) {
+			return "redirect:list.do";
+		}else {
+			return "redirect:detail.do?myno="+myno;
+		}
 	}
 }
