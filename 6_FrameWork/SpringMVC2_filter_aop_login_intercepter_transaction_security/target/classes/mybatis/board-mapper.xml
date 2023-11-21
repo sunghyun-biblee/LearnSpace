@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis mapper 파일로 만들기 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="myboard"> <!-- 사용할때는 NAMESPACE와 실행하고자하는 쿼리문의 아이디만 잘 적어주면 된다. -->
+	<select id="selectList" resultType="boardDto"> 
+	<!-- 원하는 쿼리문을 저장하여 아이디값으로 쿼리문을 실행할 수 있다. / resultType: 저장할타입을 지정> 클래스타입을 지정해주어야함 > 클래스명(경로)가 길기떄문에 -->
+	<!--  <typeAlias type="com.mvc.upgrade.model.dto.BoardDto" alias="boardDto"/> : 타입얼리어스에 작성해둔 별명으로 작성 -->
+		SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE
+		FROM MYBOARD 
+		ORDER BY MYNO DESC;
+	</select>  
+	<!-- 해당하는 객체타입에 리스트를 담았는것을 -->
+	<!-- property : setter / column= 데이터컬럼 -->
+	<!-- 각각의 컬럼을 어느필드에 저장할지 세부적으로 정함 -->
+	
+	<!-- dto 컬럼명이랑 db컬럼명이랑 다르면 값을 자동으로 잘 찾기 못하기때문에( 불일치하는 자바 명이 매칭 ) resultMap을 사용하는것이 좋다 -->
+	<resultMap type="boardDto" id="boardMap">
+		<result property="myno" column="MYNO"/>
+		<result property="myname" column="MYNAME"/>
+		<result property="mytitle" column="MYTITLE"/>
+		<result property="mycontent" column="MYCONTENT"/>
+		<result property="mydate" column="MYDATE"/>
+		<!-- mybatis로 조회된 값을 저장 -->
+	</resultMap>
+	
+	<!-- #{myno} : dao에서 넘겨준 myno값을 받아오기위함 -->
+	<select id="selectOne" resultMap="boardMap">
+		SELECT * FROM MYBOARD WHERE MYNO = #{myno} 
+	</select>
+	
+	<!-- dao에서 작성한 NAMESPACE 뒤에 작성한 ID값을 그대로 작성하여야 해당 쿼리문을 실행한다 -->
+	<!-- dao에서 넘겨준 dto객체의 저장된 필드 값을 가져오기 > #{} 형식으로 작성 -->
+	<!-- parameterType=? : 매개변수로 넘겨준 객체의 타입이 어떤 타입인가를 알려줌 -->
+	<insert id="insert" parameterType="boardDto"> <!--  리턴값은 정수로 고정되어있기떄문에 생략 가능하다. 명시하는걸 추천-->
+		INSERT INTO MYBOARD VALUES(NULL,#{myname},#{mytitle},#{mycontent},NOW())
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+</mapper>
