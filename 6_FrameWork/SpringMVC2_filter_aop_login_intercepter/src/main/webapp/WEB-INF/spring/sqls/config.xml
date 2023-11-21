@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis configuration 파일로 만들기 -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.mvc.upgrade.model.dto.BoardDto" alias="boardDto"/>
+		<!-- boardDto라는 이름으로 전체이름을 대변함 > BoardDto의 별명 정해주기 -->
+		<typeAlias type="com.mvc.upgrade.model.dto.MemberDto" alias="memberDto"/>
+	</typeAliases>
+	
+	<mappers> <!-- 사용할 맵퍼를 등록 (맵퍼들을 여러개 만들어두고 등록하여 사용 > 맵퍼안에는 쿼리문이 존재)-->
+		<mapper resource="/mybatis/board-mapper.xml" />
+		<mapper resource="/mybatis/member-mapper.xml" />
+	</mappers>
+</configuration>
